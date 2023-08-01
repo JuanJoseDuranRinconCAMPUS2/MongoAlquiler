@@ -1,0 +1,11 @@
+
+
+//Alquiler Campus
+
+//Ejercicios:
+
+//1
+// Mostrar todos los clientes registrados en la base de datos
+
+use("db_campus_alquiler");
+db.cliente.find();
