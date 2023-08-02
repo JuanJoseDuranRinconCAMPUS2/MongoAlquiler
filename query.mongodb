@@ -252,3 +252,14 @@ db.alquiler.find({ Fecha_Inicio: { $eq: "07-05-2023" }});
 
 use("db_campus_alquiler");
 db.reserva.find({ Estado: { $eq: "Pendiente" }, cliente_id: { $eq: 1 }});
+
+//13
+// Mostrar los empleados con cargo de "Gerente" o "Asistente". 
+
+use("db_campus_alquiler");
+db.empleado.find({
+    $or: [
+        {Cargo: { $eq: "Gerente" }}, 
+        {Cargo: { $eq: "Vendedor" }}
+    ]
+});
