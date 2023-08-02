@@ -199,8 +199,8 @@ db.getCollection("sucursal").aggregate([
             Nombre: {
                 $first: "$Nombre"
             },
-            Dirrecion: {
-                $first: "$Dirrecion"
+            Direccion: {
+                $first: "$Direccion"
             },
             Telefono: {
                 $first: "$Telefono"
@@ -351,8 +351,8 @@ db.getCollection("sucursal").aggregate([
             Nombre: {
                 $first: "$Nombre"
             },
-            Dirrecion: {
-                $first: "$Dirrecion"
+            Direccion: {
+                $first: "$Direccion"
             },
             Total_Automoviles: {
                 $sum: "$Cantidad_Automovil.Cantidad_Disponible"

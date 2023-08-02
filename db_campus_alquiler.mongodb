@@ -18,35 +18,35 @@ db.sucursal.insertMany([
         _id: 1,
         ID_sucursal: 1,
         Nombre: "Zona Franca",
-        Dirrecion: "Florida",
+        Direccion: "Florida",
         Telefono: 131312
     },
     {
         _id: 2,
         ID_sucursal: 2,
         Nombre: "Exito",
-        Dirrecion: "Cabecera",
+        Direccion: "Cabecera",
         Telefono: 4353424
     },
     {
         _id: 3,
         ID_sucursal: 3,
         Nombre: "La Rosita",
-        Dirrecion: "Bucaramanga",
+        Direccion: "Bucaramanga",
         Telefono: 2344563
     },
     {
         _id: 4,
         ID_sucursal: 4,
         Nombre: "Sucursal Plus",
-        Dirrecion: "Giron",
+        Direccion: "Giron",
         Telefono: 6433522
     },
     {
         _id: 5,
         ID_sucursal: 5,
         Nombre: "Zona Franca",
-        Dirrecion: "Florida",
+        Direccion: "Florida",
         Telefono: 4356546
     }
 ]);
@@ -208,8 +208,8 @@ db.alquiler.insertMany([
         ID_Alquiler: 1,
         cliente_id: 2,
         automovil_id: 2,
-        Fecha_Inicio: "11-05-2023",
-        Fecha_Fin: "25-05-2023",
+        Fecha_Inicio: ISODate("2023-07-05T12:00:00Z"),
+        Fecha_Fin: ISODate("2023-08-01T12:00:00Z"),
         Costo_Total: 2800000.00,
         Estado: "Activo"
     },
@@ -218,8 +218,8 @@ db.alquiler.insertMany([
         ID_Alquiler: 2,
         cliente_id: 1,
         automovil_id: 3,
-        Fecha_Inicio: "12-02-2023",
-        Fecha_Fin: "15-02-2023",
+        Fecha_Inicio: ISODate("2023-07-11T12:00:00Z"),
+        Fecha_Fin: ISODate("2023-07-21T12:00:00Z"),
         Costo_Total: 450000.00,
         Estado: "Activo"
     },
@@ -228,8 +228,8 @@ db.alquiler.insertMany([
         ID_Alquiler: 3,
         cliente_id: 1,
         automovil_id: 2,
-        Fecha_Inicio: "11-10-2023",
-        Fecha_Fin: "19-10-2023",
+        Fecha_Inicio: ISODate("2023-08-01T12:00:00Z"),
+        Fecha_Fin: ISODate("2023-08-12T12:00:00Z"),
         Costo_Total: 1600000.00,
         Estado: "Pendiente"
     },
@@ -238,8 +238,8 @@ db.alquiler.insertMany([
         ID_Alquiler: 4,
         cliente_id: 4,
         automovil_id: 1,
-        Fecha_Inicio: "11-11-2023",
-        Fecha_Fin: "12-11-2023",
+        Fecha_Inicio: ISODate("2023-07-07T12:00:00Z"),
+        Fecha_Fin: ISODate("2023-08-11T12:00:00Z"),
         Costo_Total: 250000.00,
         Estado: "Pendiente"
     },
@@ -248,8 +248,8 @@ db.alquiler.insertMany([
         ID_Alquiler: 5,
         cliente_id: 5,
         automovil_id: 1,
-        Fecha_Inicio: "20-12-2023",
-        Fecha_Fin: "30-12-2023",
+        Fecha_Inicio: ISODate("2023-12-01T12:00:00Z"),
+        Fecha_Fin: ISODate("2024-01-01T12:00:00Z"),
         Costo_Total: 2500000.00,
         Estado: "Pendiente"
     }
@@ -264,51 +264,51 @@ db.reserva.insertMany([
         ID_Reserva: 1,
         cliente_id: 1,
         automovil_id: 4,
-        Fecha_Reserva: "07-04-2023",
-        Fecha_Inicio: "09-05-2023",
-        Fecha_Fin: "15-12-2023",
+        Fecha_Reserva: ISODate("2023-04-07T12:00:00Z"),
+        Fecha_Inicio: ISODate("2023-05-09T12:00:00Z"),
+        Fecha_Fin: ISODate("2023-12-15T12:00:00Z"),
         Estado: "Pendiente"
-    },
-    {
+      },
+      {
         _id: 2,
         ID_Reserva: 2,
         cliente_id: 3,
         automovil_id: 2,
-        Fecha_Reserva: "12-04-2023",
-        Fecha_Inicio: "15-05-2023",
-        Fecha_Fin: "15-12-2023",
+        Fecha_Reserva: ISODate("2023-04-12T12:00:00Z"),
+        Fecha_Inicio: ISODate("2023-05-15T12:00:00Z"),
+        Fecha_Fin: ISODate("2023-12-15T12:00:00Z"),
         Estado: "Pendiente"
-    },
-    {
+      },
+      {
         _id: 3,
         ID_Reserva: 3,
         cliente_id: 2,
         automovil_id: 1,
-        Fecha_Reserva: "12-04-2023",
-        Fecha_Inicio: "09-07-2023",
-        Fecha_Fin: "11-08-2023",
+        Fecha_Reserva: ISODate("2023-04-12T12:00:00Z"),
+        Fecha_Inicio: ISODate("2023-07-09T12:00:00Z"),
+        Fecha_Fin: ISODate("2023-08-11T12:00:00Z"),
         Estado: "Finalizada"
-    },
-    {
+      },
+      {
         _id: 4,
         ID_Reserva: 4,
         cliente_id: 4,
         automovil_id: 3,
-        Fecha_Reserva: "07-04-2023",
-        Fecha_Inicio: "09-05-2023",
-        Fecha_Fin: "15-05-2023",
+        Fecha_Reserva: ISODate("2023-04-07T12:00:00Z"),
+        Fecha_Inicio: ISODate("2023-05-09T12:00:00Z"),
+        Fecha_Fin: ISODate("2023-05-15T12:00:00Z"),
         Estado: "Finalizada"
-    },
-    {
+      },
+      {
         _id: 5,
         ID_Reserva: 5,
         cliente_id: 5,
         automovil_id: 3,
-        Fecha_Reserva: "07-02-2023",
-        Fecha_Inicio: "09-03-2023",
-        Fecha_Fin: "15-04-2023",
+        Fecha_Reserva: ISODate("2023-02-07T12:00:00Z"),
+        Fecha_Inicio: ISODate("2023-03-09T12:00:00Z"),
+        Fecha_Fin: ISODate("2023-04-12T12:00:00Z"),
         Estado: "Pendiente"
-    }
+      }
 ]);
 
 // Inyeccion de data para la coleccion empleado
@@ -376,7 +376,7 @@ db.registro_entrega.insertMany([
         ID_Registro: 1,
         alquiler_id: 1,
         empleado_id: 2,
-        Fecha_Entrega: "07-04-2023",
+        Fecha_Entrega: ISODate("2023-04-07T12:00:00Z"),
         Combustible_Entregado: 11.5,
         Kilometraje_Entregado: 5000
     },
@@ -385,7 +385,7 @@ db.registro_entrega.insertMany([
         ID_Registro: 2,
         alquiler_id: 4,
         empleado_id: 3,
-        Fecha_Entrega: "15-01-2023",
+        Fecha_Entrega: ISODate("2023-01-15T12:00:00Z"),
         Combustible_Entregado: 2.5,
         Kilometraje_Entregado: 5001
     },
@@ -394,7 +394,7 @@ db.registro_entrega.insertMany([
         ID_Registro: 3,
         alquiler_id: 2,
         empleado_id: 2,
-        Fecha_Entrega: "31-09-2023",
+        Fecha_Entrega: ISODate("2023-09-30T12:00:00Z"),
         Combustible_Entregado: 12.5,
         Kilometraje_Entregado: 5000
     },
@@ -403,7 +403,7 @@ db.registro_entrega.insertMany([
         ID_Registro: 4,
         alquiler_id: 4,
         empleado_id: 5,
-        Fecha_Entrega: "07-05-2023",
+        Fecha_Entrega: ISODate("2023-05-07T12:00:00Z"),
         Combustible_Entregado: 6.5,
         Kilometraje_Entregado: 6000
     },
@@ -412,7 +412,7 @@ db.registro_entrega.insertMany([
         ID_Registro: 5,
         alquiler_id: 3,
         empleado_id: 1,
-        Fecha_Entrega: "17-04-2023",
+        Fecha_Entrega: ISODate("2023-04-17T12:00:00Z"),
         Combustible_Entregado: 3.5,
         Kilometraje_Entregado: 10000
     }  
@@ -427,7 +427,7 @@ db.registro_devolucion.insertMany([
         ID_Registro: 1,
         alquiler_id: 1,
         empleado_id: 2,
-        Fecha_Devolucion: "07-04-2023",
+        Fecha_Devolucion: ISODate("2023-04-07T12:00:00Z"),
         Combustible_Devuelto: 2.5,
         Kilometraje_Devuelto: 1566,
         Monto_Adicional: 100000.00
@@ -437,7 +437,7 @@ db.registro_devolucion.insertMany([
         ID_Registro: 2,
         alquiler_id: 4,
         empleado_id: 3,
-        Fecha_Devolucion: "03-05-2023",
+        Fecha_Devolucion: ISODate("2023-05-03T12:00:00Z"),
         Combustible_Devuelto: 11.5,
         Kilometraje_Devuelto: 2000,
         Monto_Adicional: 20000.00
@@ -447,7 +447,7 @@ db.registro_devolucion.insertMany([
         ID_Registro: 3,
         alquiler_id: 5,
         empleado_id: 1,
-        Fecha_Devolucion: "07-03-2023",
+        Fecha_Devolucion: ISODate("2023-03-07T12:00:00Z"),
         Combustible_Devuelto: 6.5,
         Kilometraje_Devuelto: 1250,
         Monto_Adicional: 100.00
@@ -457,7 +457,7 @@ db.registro_devolucion.insertMany([
         ID_Registro: 4,
         alquiler_id: 2,
         empleado_id: 3,
-        Fecha_Devolucion: "07-07-2023",
+        Fecha_Devolucion: ISODate("2023-07-07T12:00:00Z"),
         Combustible_Devuelto: 9.5,
         Kilometraje_Devuelto: 2566,
         Monto_Adicional: 20500.00
@@ -467,7 +467,7 @@ db.registro_devolucion.insertMany([
         ID_Registro: 5,
         alquiler_id: 5,
         empleado_id: 1,
-        Fecha_Devolucion: "11-11-2023",
+        Fecha_Devolucion: ISODate("2023-11-11T12:00:00Z"),
         Combustible_Devuelto: 0.5,
         Kilometraje_Devuelto: 2500,
         Monto_Adicional: 50000.00
