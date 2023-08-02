@@ -221,3 +221,16 @@ db.getCollection("sucursal").aggregate([
 use("db_campus_alquiler");
 db.alquiler.find({ ID_Alquiler: { $eq: 5 }},
     { _id: 1, Costo_Total: 1 });
+
+//9
+// Listar los clientes con el DNI específico.
+
+use("db_campus_alquiler");
+db.cliente.find({ DNI: { $eq: "343434" }});
+
+//DNI DISPONIBLES:
+// 343434
+// 1225631215
+// 22554451
+// 45897812564
+// 125233544
