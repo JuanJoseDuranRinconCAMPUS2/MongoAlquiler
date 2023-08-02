@@ -247,3 +247,8 @@ db.automovil.find({ Capacidad: { $gt: 5 }});
 use("db_campus_alquiler");
 db.alquiler.find({ Fecha_Inicio: { $eq: "07-05-2023" }});
 
+//12
+// Listar las reservas pendientes realizadas por un cliente específico.
+
+use("db_campus_alquiler");
+db.reserva.find({ Estado: { $eq: "Pendiente" }, cliente_id: { $eq: 1 }});
