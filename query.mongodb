@@ -427,3 +427,57 @@ db.getCollection("automovil").aggregate([
         }
     }
 ]);
+
+//19
+// Obtener los datos del cliente que realizó la reserva con ID_Reserva específico.
+
+use("db_campus_alquiler");
+db.getCollection("cliente").aggregate([  
+    {    
+        $lookup: {      
+            from: "reserva",     
+            localField: "_id",      
+            foreignField: "cliente_id",      
+            as: "Reserva"   
+         }  
+    },  
+    {
+        $unwind: "$Reserva"
+    },
+    {
+        $match: {Reserva: { $ne: [] }, "Reserva._id": {$gte: 5}}
+    },
+    {
+        $set: { Estado: {
+            $concat: [
+                "El cliente tiene una reserva con el id ", " ", { $toString: "$Reserva._id" }
+            ]
+        } }
+    },
+    {
+        $group: {
+            _id: "$_id",
+            Nombre: {
+                $first: "$Nombre"
+            },
+            Apellido: {
+                $first: "$Apellido"
+            },
+            DNI: {
+                $first: "$DNI"
+            },
+            Direccion: {
+                $first: "$Direccion"
+            },
+            Telefono: {
+                $first: "$Telefono"
+            },
+            Email: {
+                $first: "$Email"
+            },
+            Estado: {
+                $first: "$Estado"
+            }
+        }
+    }
+]);
