@@ -313,3 +313,9 @@ db.getCollection("cliente").aggregate([
         }
     }
 ]);
+
+//15
+// Listar todos los automóviles ordenados por marca y modelo.
+
+use("db_campus_alquiler");
+db.automovil.find().sort( { Marca: 1, Modelo: 1 } );
