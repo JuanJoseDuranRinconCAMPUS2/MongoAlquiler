@@ -245,7 +245,7 @@ db.automovil.find({ Capacidad: { $gt: 5 }});
 // Obtener los detalles del alquiler que tiene fecha de inicio en '2023-07-05'.
 
 use("db_campus_alquiler");
-db.alquiler.find({ Fecha_Inicio: { $eq: "07-05-2023" }});
+db.alquiler.find({ Fecha_Inicio: { $eq : new Date('2023-07-05') }});
 
 //12
 // Listar las reservas pendientes realizadas por un cliente específico.
@@ -481,3 +481,14 @@ db.getCollection("cliente").aggregate([
         }
     }
 ]);
+
+//20
+// Listar los alquileres con fecha de inicio entre '2023-07-05' y '2023-07-10'.
+
+use("db_campus_alquiler");
+db.alquiler.find({
+    Fecha_Inicio: {
+      $gte: new Date('2023-07-05'),
+      $lte: new Date('2023-07-10')
+    }
+  });
