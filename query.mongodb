@@ -234,3 +234,9 @@ db.cliente.find({ DNI: { $eq: "343434" }});
 // 22554451
 // 45897812564
 // 125233544
+
+//10
+// Mostrar todos los automóviles con una capacidad mayor a 5 personas. 
+
+use("db_campus_alquiler");
+db.automovil.find({ Capacidad: { $gt: 5 }});
