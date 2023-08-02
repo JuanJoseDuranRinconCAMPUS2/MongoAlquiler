@@ -319,3 +319,44 @@ db.getCollection("cliente").aggregate([
 
 use("db_campus_alquiler");
 db.automovil.find().sort( { Marca: 1, Modelo: 1 } );
+
+//16
+// Mostrar la cantidad total de automóviles en cada sucursal junto con su dirección.
+
+use("db_campus_alquiler");
+db.getCollection("sucursal").aggregate([  
+    {    
+        $lookup: {      
+            from: "sucursal_automovil",     
+            localField: "_id",      
+            foreignField: "sucursal_id",      
+            as: "Cantidad_Automovil"   
+         }  
+    },  
+    {
+        $match: {CantididadAutomovil: { $ne: [] }}
+    },
+    {
+        $unwind: "$Cantidad_Automovil"
+    },
+    {    
+        $project: {     
+            "Cantidad_Automovil.sucursal_id": 0,
+            "Cantidad_Automovil.automovil_id": 0
+        } 
+    },
+    {
+        $group: {
+            _id: "$_id",
+            Nombre: {
+                $first: "$Nombre"
+            },
+            Dirrecion: {
+                $first: "$Dirrecion"
+            },
+            Total_Automoviles: {
+                $sum: "$Cantidad_Automovil.Cantidad_Disponible"
+            }
+        }
+    }
+]);
