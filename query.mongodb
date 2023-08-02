@@ -383,3 +383,47 @@ db.alquiler.aggregate([
         } 
     }
 ]);
+
+//18
+// Mostrar los automóviles con capacidad igual a 5 personas y que estén disponibles
+
+use("db_campus_alquiler");
+db.getCollection("automovil").aggregate([  
+    {    
+        $lookup: {      
+            from: "alquiler",     
+            localField: "_id",      
+            foreignField: "automovil_id",      
+            as: "Alquileres"   
+         }  
+    },  
+    {
+        $match: {Alquileres: { $ne: [] }, Capacidad: {$gte: 5}}
+    },
+    {
+        $unwind: "$Alquileres"
+    },
+    {
+        $group: {
+            _id: "$_id",
+            Marca: {
+                $first: "$Marca"
+            },
+            Modelo: {
+                $first: "$Modelo"
+            },
+            Año: {
+                $first: "$Anio"
+            },
+            Tipo: {
+                $first: "$Tipo"
+            },
+            Capacidad: {
+                $first: "$Capacidad"
+            },
+            Precio_Diario: {
+                $first: "$Precio_Diario"
+            }
+        }
+    }
+]);
