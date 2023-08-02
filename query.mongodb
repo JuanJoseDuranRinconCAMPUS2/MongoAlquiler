@@ -155,3 +155,9 @@ db.getCollection("reserva").aggregate([
         }
     }
 ]);
+
+//5
+//  Obtener los detalles del alquiler con el ID_Alquilerespecífico. 
+
+use("db_campus_alquiler");
+db.alquiler.find({ ID_Alquiler: { $eq: 2 }})
