@@ -161,3 +161,9 @@ db.getCollection("reserva").aggregate([
 
 use("db_campus_alquiler");
 db.alquiler.find({ ID_Alquiler: { $eq: 2 }})
+
+//6
+//  Listar los empleados con el cargo de "Vendedor".
+
+use("db_campus_alquiler");
+db.empleado.find({ Cargo: { $eq: "Vendedor" }});
