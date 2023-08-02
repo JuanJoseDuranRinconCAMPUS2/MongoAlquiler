@@ -9,3 +9,44 @@
 
 use("db_campus_alquiler");
 db.cliente.find();
+
+//2
+// Obtener todos los automóviles disponibles para alquiler.
+
+use("db_campus_alquiler");
+db.getCollection("automovil").aggregate([  
+    {    
+        $lookup: {      
+            from: "alquiler",     
+            localField: "_id",      
+            foreignField: "automovil_id",      
+            as: "Alquileres"   
+         }  
+    },  
+    {
+        $match: {Alquileres: { $ne: [] }}
+    },
+    {    
+        $project: {     
+            Marca: 1,      
+            Modelo: 1,     
+            Anio: 1,      
+            Tipo: 1,      
+            Capacidad: 1,      
+            Precio_Diario: 1,      
+            Alquileres: {
+                $map: {
+                  input: "$Alquileres",
+                  as: "alquiler",
+                  in: {
+                    id: "$$alquiler._id",
+                    Fecha_Inicio: "$$alquiler.Fecha_Inicio",
+                    Fecha_Fin: "$$alquiler.Fecha_Fin",
+                    Costo_Total: "$$alquiler.Costo_Total",
+                    Estado: "$$alquiler.Estado"
+                  }
+                }
+            }
+        } 
+    } 
+]);
