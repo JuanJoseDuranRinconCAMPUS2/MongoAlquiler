@@ -263,3 +263,53 @@ db.empleado.find({
         {Cargo: { $eq: "Vendedor" }}
     ]
 });
+
+//14
+// Obtener los datos de los clientes que realizaron al menos un alquiler
+
+use("db_campus_alquiler");
+db.getCollection("cliente").aggregate([  
+    {    
+        $lookup: {      
+            from: "alquiler",     
+            localField: "_id",      
+            foreignField: "cliente_id",      
+            as: "Alquiler"   
+         }  
+    },  
+    {
+        $match: {Alquiler: { $ne: [] }}
+    },
+    {
+        $unwind: "$Alquiler"
+    },
+    {
+        $set: { Estado: "El cliente tiene alquileres registrados" }
+    },
+    {
+        $group: {
+            _id: "$_id",
+            Nombre: {
+                $first: "$Nombre"
+            },
+            Apellido: {
+                $first: "$Apellido"
+            },
+            DNI: {
+                $first: "$DNI"
+            },
+            Direccion: {
+                $first: "$Direccion"
+            },
+            Telefono: {
+                $first: "$Telefono"
+            },
+            Email: {
+                $first: "$Email"
+            },
+            Estado: {
+                $first: "$Estado"
+            }
+        }
+    }
+]);
