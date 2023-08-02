@@ -214,3 +214,10 @@ db.getCollection("sucursal").aggregate([
         }
     }
 ]);
+
+//8
+//  Obtener el costo total de un alquiler específico.
+
+use("db_campus_alquiler");
+db.alquiler.find({ ID_Alquiler: { $eq: 5 }},
+    { _id: 1, Costo_Total: 1 });
