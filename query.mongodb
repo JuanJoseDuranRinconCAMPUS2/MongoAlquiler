@@ -13,6 +13,7 @@ db.cliente.find();
 //2
 // Obtener todos los automóviles disponibles para alquiler.
 
+// encontre este metodo que permite seleccionar que data quiero mostrar dentro del objeto con la relacion, sino ademas me permite elegir los nombres para cada llave
 use("db_campus_alquiler");
 db.getCollection("automovil").aggregate([  
     {    
@@ -49,4 +50,50 @@ db.getCollection("automovil").aggregate([
             }
         } 
     } 
+]);
+
+//3
+// Listar todos los alquileres activos junto con los datos de los lientes relacionados. 
+
+use("db_campus_alquiler");
+db.getCollection("alquiler").aggregate([  
+    {    
+        $lookup: {      
+            from: "cliente",     
+            localField: "cliente_id",      
+            foreignField: "_id",      
+            as: "Clientes"   
+         }  
+    },  
+    {
+        $match: {Clientes: { $ne: [] }, Estado: { $eq: "Activo" }}
+    },
+    {
+        $unwind: "$Clientes"
+    },
+    {    
+        $project: {     
+            "Clientes.ID_Cliente": 0,
+        } 
+    },
+    {
+        $group: {
+            _id: "$_id",
+            Fecha_Inicio: {
+                $first: "$Fecha_Inicio"
+            },
+            Fecha_Fin: {
+                $first: "$Fecha_Fin"
+            },
+            Costo_Total: {
+                $first: "$Costo_Total"
+            },
+            Estado: {
+                $first: "$Estado"
+            },
+            Clientes: {
+                $push: "$Clientes"
+            },
+        }
+    }
 ]);
