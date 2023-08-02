@@ -240,3 +240,10 @@ db.cliente.find({ DNI: { $eq: "343434" }});
 
 use("db_campus_alquiler");
 db.automovil.find({ Capacidad: { $gt: 5 }});
+
+//11
+// Obtener los detalles del alquiler que tiene fecha de inicio en '2023-07-05'.
+
+use("db_campus_alquiler");
+db.alquiler.find({ Fecha_Inicio: { $eq: "07-05-2023" }});
+
