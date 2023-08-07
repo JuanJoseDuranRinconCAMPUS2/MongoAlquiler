@@ -24,17 +24,17 @@ export let limitGColecciones = () => {
     })
 }
 
-export let limitPostColecciones = () => {
+export let limitCrearColecciones = () => {
     return rateLimit({
         windowMs: 15 * 1000, // 15 sg
         max: 5, 
         standardHeaders: true, 
         legacyHeaders: false, 
         skip: (req, res) =>{
-            if(req.headers["content-length"]>91){
+            if(req.headers["content-length"]>60){
                 res.status(413).send({
                     status: 413,
-                    message: "El tamaño es incorrecto"
+                    message: "El tamaño de data es incorrecto"
                 });
                 return true;
             }
