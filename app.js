@@ -7,6 +7,7 @@ import AppCliente from './routes/CCliente.js';
 import AppEmpleado from './routes/CEmpleado.js';
 import AppRegistroDevolucion from './routes/CRegistroDevolucion.js';
 import AppRegistroEntrega from './routes/CRegistroEntrega.js';
+import AppReserva from './routes/CResersa.js';
 console.clear();
 dotnev.config();
 
@@ -21,6 +22,7 @@ AlquilerApi.use('/Cliente', AppCliente);
 AlquilerApi.use('/Empleado', AppEmpleado);
 AlquilerApi.use('/RegistroDevolucion', AppRegistroDevolucion);
 AlquilerApi.use('/RegistroEntrega', AppRegistroEntrega);
+AlquilerApi.use('/Reserva', AppReserva);
 // ════════ ⋆★⋆ ════════
 
 const config = JSON.parse(process.env.MY_CONFIG);
