@@ -3,6 +3,7 @@ import express from 'express';
 import AppColecciones from './routes/CColecciones.js';
 import AppAlquiler from './routes/CAlquiler.js';
 import AppAutomovil from './routes/CAutomovil.js';
+import AppCliente from './routes/CCliente.js';
 console.clear();
 dotnev.config();
 
@@ -13,6 +14,7 @@ AlquilerApi.use(express.json());
 AlquilerApi.use('/Colecciones', AppColecciones);
 AlquilerApi.use('/Alquiler', AppAlquiler);
 AlquilerApi.use('/Automovil', AppAutomovil);
+AlquilerApi.use('/Cliente', AppCliente);
 // ════════ ⋆★⋆ ════════
 
 const config = JSON.parse(process.env.MY_CONFIG);
