@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {limitGColecciones, limitPRegistroDevolucion, limitDColecciones} from '../middleware/limit.js';
+import {limitGColecciones, limitPColecciones, limitDColecciones} from '../middleware/limit.js';
 import bodyParser  from 'body-parser';
 import { Collection, ObjectId } from 'mongodb';
 import { con } from '../db/atlas.js';
@@ -15,7 +15,7 @@ AppRegistroDevolucion.get('/GetRegistroDevolucion', limitGColecciones(), async (
 
 })
 
-AppRegistroDevolucion.post('/PostRegistroDevolucion', limitPRegistroDevolucion(), async (req, res) =>{
+AppRegistroDevolucion.post('/PostRegistroDevolucion', limitPColecciones(280, "registro_devolucion"), async (req, res) =>{
     if(!req.rateLimit) return;
     let registro_devolucion = db.collection("registro_devolucion");
 
@@ -27,7 +27,7 @@ AppRegistroDevolucion.post('/PostRegistroDevolucion', limitPRegistroDevolucion()
       }
 })
 
-AppRegistroDevolucion.put('/PutRegistroDevolucion', limitPRegistroDevolucion(), async (req, res) =>{
+AppRegistroDevolucion.put('/PutRegistroDevolucion', limitPColecciones(280, "registro_devolucion"), async (req, res) =>{
     if(!req.rateLimit) return;
     let registro_devolucion = db.collection("registro_devolucion");
     const id = parseInt(req.query.id, 10);

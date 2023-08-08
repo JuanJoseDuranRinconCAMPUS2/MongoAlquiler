@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {limitGColecciones, limitPRegistroEntrega, limitDColecciones} from '../middleware/limit.js';
+import {limitGColecciones, limitPColecciones, limitDColecciones} from '../middleware/limit.js';
 import bodyParser  from 'body-parser';
 import { Collection, ObjectId } from 'mongodb';
 import { con } from '../db/atlas.js';
@@ -15,7 +15,7 @@ AppRegistroEntrega.get('/GetRegistroEntrega', limitGColecciones(), async (req, r
 
 })
 
-AppRegistroEntrega.post('/PostRegistroEntrega', limitPRegistroEntrega(), async (req, res) =>{
+AppRegistroEntrega.post('/PostRegistroEntrega', limitPColecciones(250, "registro_entrega"), async (req, res) =>{
     if(!req.rateLimit) return;
     let registro_entrega = db.collection("registro_entrega");
 
@@ -27,7 +27,7 @@ AppRegistroEntrega.post('/PostRegistroEntrega', limitPRegistroEntrega(), async (
       }
 })
 
-AppRegistroEntrega.put('/PutRegistroEntrega', limitPRegistroEntrega(), async (req, res) =>{
+AppRegistroEntrega.put('/PutRegistroEntrega', limitPColecciones(250, "registro_entrega"), async (req, res) =>{
     if(!req.rateLimit) return;
     let registro_entrega = db.collection("registro_entrega");
     const id = parseInt(req.query.id, 10);

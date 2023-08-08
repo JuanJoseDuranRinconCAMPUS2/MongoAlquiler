@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {limitGColecciones, limitPEmpleado, limitDColecciones} from '../middleware/limit.js';
+import {limitGColecciones, limitPColecciones, limitDColecciones} from '../middleware/limit.js';
 import bodyParser  from 'body-parser';
 import { Collection, ObjectId } from 'mongodb';
 import { con } from '../db/atlas.js';
@@ -15,7 +15,7 @@ AppEmpleado.get('/GetEmpleado', limitGColecciones(), async (req, res) =>{
 
 })
 
-AppEmpleado.post('/PostEmpleado', limitPEmpleado(), async (req, res) =>{
+AppEmpleado.post('/PostEmpleado', limitPColecciones(240, "empleado"), async (req, res) =>{
     if(!req.rateLimit) return;
     let empleado = db.collection("empleado");
 
@@ -27,7 +27,7 @@ AppEmpleado.post('/PostEmpleado', limitPEmpleado(), async (req, res) =>{
       }
 })
 
-AppEmpleado.put('/PutEmpleado', limitPEmpleado(), async (req, res) =>{
+AppEmpleado.put('/PutEmpleado', limitPColecciones(240, "empleado"), async (req, res) =>{
     if(!req.rateLimit) return;
     let empleado = db.collection("empleado");
     const id = parseInt(req.query.id, 10);

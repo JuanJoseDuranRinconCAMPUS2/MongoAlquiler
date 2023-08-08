@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {limitGColecciones, limitPReserva, limitDColecciones} from '../middleware/limit.js';
+import {limitGColecciones, limitPColecciones, limitDColecciones} from '../middleware/limit.js';
 import bodyParser  from 'body-parser';
 import { Collection, ObjectId } from 'mongodb';
 import { con } from '../db/atlas.js';
@@ -15,7 +15,7 @@ AppReserva.get('/GetReserva', limitGColecciones(), async (req, res) =>{
 
 })
 
-AppReserva.post('/PostReserva', limitPReserva(), async (req, res) =>{
+AppReserva.post('/PostReserva', limitPColecciones(290, "reserva"), async (req, res) =>{
     if(!req.rateLimit) return;
     let reserva = db.collection("reserva");
 
@@ -27,7 +27,7 @@ AppReserva.post('/PostReserva', limitPReserva(), async (req, res) =>{
       }
 })
 
-AppReserva.put('/PutReserva', limitPReserva(), async (req, res) =>{
+AppReserva.put('/PutReserva', limitPColecciones(290, "reserva"), async (req, res) =>{
     if(!req.rateLimit) return;
     let reserva = db.collection("reserva");
     const id = parseInt(req.query.id, 10);

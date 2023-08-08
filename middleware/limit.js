@@ -48,14 +48,14 @@ export let limitCrearColecciones = () => {
     })
 }
 
-export let limitPAlquiler = () => {
+export let limitPColecciones = (num, name) => {
     return rateLimit({
         windowMs: 15 * 1000, // 15 sg
         max: 5, 
         standardHeaders: true, 
         legacyHeaders: false, 
         skip: (req, res) =>{
-            if(req.headers["content-length"]>250){
+            if(req.headers["content-length"]>num){
                 res.status(413).send({
                     status: 413,
                     message: "El tamaño de data es incorrecto"
@@ -66,203 +66,12 @@ export let limitPAlquiler = () => {
         message: (req,res)=>{
             res.status(429).send({
                 status: 429,
-                message: 'Demasiadas consultas en un corto periodo de tiempo en el endpoint Alquiler'
+                message: `Demasiadas consultas en un corto periodo de tiempo en el endpoint ${name}`
             })
         }
     })
 }
 
-export let limitPAutomovil = () => {
-    return rateLimit({
-        windowMs: 15 * 1000, // 15 sg
-        max: 5, 
-        standardHeaders: true, 
-        legacyHeaders: false, 
-        skip: (req, res) =>{
-            if(req.headers["content-length"]>280){
-                res.status(413).send({
-                    status: 413,
-                    message: "El tamaño de data es incorrecto"
-                });
-                return true;
-            }
-        },
-        message: (req,res)=>{
-            res.status(429).send({
-                status: 429,
-                message: 'Demasiadas consultas en un corto periodo de tiempo en el endpoint Automovil'
-            })
-        }
-    })
-}
-
-export let limitPCliente = () => {
-    return rateLimit({
-        windowMs: 15 * 1000, // 15 sg
-        max: 5, 
-        standardHeaders: true, 
-        legacyHeaders: false, 
-        skip: (req, res) =>{
-            if(req.headers["content-length"]>250){
-                res.status(413).send({
-                    status: 413,
-                    message: "El tamaño de data es incorrecto"
-                });
-                return true;
-            }
-        },
-        message: (req,res)=>{
-            res.status(429).send({
-                status: 429,
-                message: 'Demasiadas consultas en un corto periodo de tiempo en el endpoint Cliente'
-            })
-        }
-    })
-}
-
-export let limitPEmpleado = () => {
-    return rateLimit({
-        windowMs: 15 * 1000, // 15 sg
-        max: 5, 
-        standardHeaders: true, 
-        legacyHeaders: false, 
-        skip: (req, res) =>{
-            if(req.headers["content-length"]>240){
-                res.status(413).send({
-                    status: 413,
-                    message: "El tamaño de data es incorrecto"
-                });
-                return true;
-            }
-        },
-        message: (req,res)=>{
-            res.status(429).send({
-                status: 429,
-                message: 'Demasiadas consultas en un corto periodo de tiempo en el endpoint Empleado'
-            })
-        }
-    })
-}
-
-export let limitPRegistroDevolucion = () => {
-    return rateLimit({
-        windowMs: 15 * 1000, // 15 sg
-        max: 5, 
-        standardHeaders: true, 
-        legacyHeaders: false, 
-        skip: (req, res) =>{
-            if(req.headers["content-length"]>280){
-                res.status(413).send({
-                    status: 413,
-                    message: "El tamaño de data es incorrecto"
-                });
-                return true;
-            }
-        },
-        message: (req,res)=>{
-            res.status(429).send({
-                status: 429,
-                message: 'Demasiadas consultas en un corto periodo de tiempo en el endpoint RegistroDevolucion'
-            })
-        }
-    })
-}
-
-export let limitPRegistroEntrega = () => {
-    return rateLimit({
-        windowMs: 15 * 1000, // 15 sg
-        max: 5, 
-        standardHeaders: true, 
-        legacyHeaders: false, 
-        skip: (req, res) =>{
-            if(req.headers["content-length"]>250){
-                res.status(413).send({
-                    status: 413,
-                    message: "El tamaño de data es incorrecto"
-                });
-                return true;
-            }
-        },
-        message: (req,res)=>{
-            res.status(429).send({
-                status: 429,
-                message: 'Demasiadas consultas en un corto periodo de tiempo en el endpoint RegistroDevolucion'
-            })
-        }
-    })
-}
-
-export let limitPReserva = () => {
-    return rateLimit({
-        windowMs: 15 * 1000, // 15 sg
-        max: 5, 
-        standardHeaders: true, 
-        legacyHeaders: false, 
-        skip: (req, res) =>{
-            if(req.headers["content-length"]>290){
-                res.status(413).send({
-                    status: 413,
-                    message: "El tamaño de data es incorrecto"
-                });
-                return true;
-            }
-        },
-        message: (req,res)=>{
-            res.status(429).send({
-                status: 429,
-                message: 'Demasiadas consultas en un corto periodo de tiempo en el endpoint Reserva'
-            })
-        }
-    })
-}
-
-export let limitPSucursal = () => {
-    return rateLimit({
-        windowMs: 15 * 1000, // 15 sg
-        max: 5, 
-        standardHeaders: true, 
-        legacyHeaders: false, 
-        skip: (req, res) =>{
-            if(req.headers["content-length"]>200){
-                res.status(413).send({
-                    status: 413,
-                    message: "El tamaño de data es incorrecto"
-                });
-                return true;
-            }
-        },
-        message: (req,res)=>{
-            res.status(429).send({
-                status: 429,
-                message: 'Demasiadas consultas en un corto periodo de tiempo en el endpoint Sucursal'
-            })
-        }
-    })
-}
-
-export let limitPSucursal_Auto = () => {
-    return rateLimit({
-        windowMs: 15 * 1000, // 15 sg
-        max: 5, 
-        standardHeaders: true, 
-        legacyHeaders: false, 
-        skip: (req, res) =>{
-            if(req.headers["content-length"]>100){
-                res.status(413).send({
-                    status: 413,
-                    message: "El tamaño de data es incorrecto"
-                });
-                return true;
-            }
-        },
-        message: (req,res)=>{
-            res.status(429).send({
-                status: 429,
-                message: 'Demasiadas consultas en un corto periodo de tiempo en el endpoint Sucursal'
-            })
-        }
-    })
-}
 export let limitDColecciones = () => {
     return rateLimit({
         windowMs: 15 * 1000, // 15 sg

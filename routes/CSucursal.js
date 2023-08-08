@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {limitGColecciones, limitPSucursal, limitDColecciones} from '../middleware/limit.js';
+import {limitGColecciones, limitPColecciones, limitDColecciones} from '../middleware/limit.js';
 import bodyParser  from 'body-parser';
 import { Collection, ObjectId } from 'mongodb';
 import { con } from '../db/atlas.js';
@@ -15,7 +15,7 @@ AppSucursal.get('/GetSucursal', limitGColecciones(), async (req, res) =>{
 
 })
 
-AppSucursal.post('/PostSucursal', limitPSucursal(), async (req, res) =>{
+AppSucursal.post('/PostSucursal', limitPColecciones(200, "sucursal"), async (req, res) =>{
     if(!req.rateLimit) return;
     let sucursal = db.collection("sucursal");
 
@@ -27,7 +27,7 @@ AppSucursal.post('/PostSucursal', limitPSucursal(), async (req, res) =>{
       }
 })
 
-AppSucursal.put('/PutSucursal', limitPSucursal(), async (req, res) =>{
+AppSucursal.put('/PutSucursal', limitPColecciones(200, "sucursal"), async (req, res) =>{
     if(!req.rateLimit) return;
     let sucursal = db.collection("sucursal");
     const id = parseInt(req.query.id, 10);

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {limitGColecciones, limitPSucursal_Auto, limitDColecciones} from '../middleware/limit.js';
+import {limitGColecciones, limitPColecciones, limitDColecciones} from '../middleware/limit.js';
 import bodyParser  from 'body-parser';
 import { Collection, ObjectId } from 'mongodb';
 import { con } from '../db/atlas.js';
@@ -15,7 +15,7 @@ AppSucursal_Auto.get('/GetSucursal_Auto', limitGColecciones(), async (req, res) 
 
 })
 
-AppSucursal_Auto.post('/PostSucursal_Auto', limitPSucursal_Auto(), async (req, res) =>{
+AppSucursal_Auto.post('/PostSucursal_Auto', limitPColecciones(100, "sucursal_automovil"), async (req, res) =>{
     if(!req.rateLimit) return;
     let sucursal_automovil = db.collection("sucursal_automovil");
 
@@ -27,7 +27,7 @@ AppSucursal_Auto.post('/PostSucursal_Auto', limitPSucursal_Auto(), async (req, r
       }
 })
 
-AppSucursal_Auto.put('/PutSucursal_Auto', limitPSucursal_Auto(), async (req, res) =>{
+AppSucursal_Auto.put('/PutSucursal_Auto', limitPColecciones(100, "sucursal_automovil"), async (req, res) =>{
     if(!req.rateLimit) return;
     let sucursal_automovil = db.collection("sucursal_automovil");
     const id = parseInt(req.query.id, 10);

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {limitGColecciones, limitPAutomovil, limitDColecciones} from '../middleware/limit.js';
+import {limitGColecciones, limitPColecciones, limitDColecciones} from '../middleware/limit.js';
 import bodyParser  from 'body-parser';
 import { Collection, ObjectId } from 'mongodb';
 import { con } from '../db/atlas.js';
@@ -15,7 +15,7 @@ AppAutomovil.get('/GetAutomovil', limitGColecciones(), async (req, res) =>{
 
 })
 
-AppAutomovil.post('/PostAutomovil', limitPAutomovil(), async (req, res) =>{
+AppAutomovil.post('/PostAutomovil', limitPColecciones(280, "automovil"), async (req, res) =>{
     if(!req.rateLimit) return;
     let automovil = db.collection("automovil");
 
@@ -27,7 +27,7 @@ AppAutomovil.post('/PostAutomovil', limitPAutomovil(), async (req, res) =>{
       }
 })
 
-AppAutomovil.put('/PutAutomovil', limitPAutomovil(), async (req, res) =>{
+AppAutomovil.put('/PutAutomovil', limitPColecciones(280, "automovil"), async (req, res) =>{
     if(!req.rateLimit) return;
     let automovil = db.collection("automovil");
     const id = parseInt(req.query.id, 10);

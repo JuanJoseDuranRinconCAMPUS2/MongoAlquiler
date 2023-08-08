@@ -1,9 +1,8 @@
 import { Router } from "express";
-import {limitGColecciones, limitPAlquiler, limitDColecciones} from '../middleware/limit.js';
+import {limitGColecciones, limitPColecciones, limitDColecciones} from '../middleware/limit.js';
 import bodyParser  from 'body-parser';
 import { Collection, ObjectId } from 'mongodb';
 import { con } from '../db/atlas.js';
-import { log } from "console";
 
 const AppAlquiler = Router();
 let db = await con();
@@ -16,7 +15,7 @@ AppAlquiler.get('/GetAlquiler', limitGColecciones(), async (req, res) =>{
 
 })
 
-AppAlquiler.post('/PostAlquiler', limitPAlquiler(), async (req, res) =>{
+AppAlquiler.post('/PostAlquiler', limitPColecciones(250, "Alquiler"), async (req, res) =>{
     if(!req.rateLimit) return;
     let alquiler = db.collection("alquiler");
 
@@ -28,7 +27,7 @@ AppAlquiler.post('/PostAlquiler', limitPAlquiler(), async (req, res) =>{
       }
 })
 
-AppAlquiler.put('/PutAlquiler', limitPAlquiler(), async (req, res) =>{
+AppAlquiler.put('/PutAlquiler', limitPColecciones(250, "Alquiler"), async (req, res) =>{
     if(!req.rateLimit) return;
     let alquiler = db.collection("alquiler");
     const id = parseInt(req.query.id, 10);
