@@ -1,14 +1,309 @@
 use("db_campus_alquiler");
+db.createCollection("sucursal", {
+    validator: {
+        $jsonSchema: {
+           bsonType: "object",
+           required: [ "_id", "ID_sucursal" ],
+           title: "sucursal Validation",
+           properties: {
+                "_id": { "bsonType": "number" , 
+                description: "'_id' must be of type number"},
+                "ID_sucursal": { "bsonType": "number" , 
+                description: "'ID_sucursal' must be of type number"},
+                "Nombre": { "bsonType": "string" , 
+                description: "'Nombre' must be of type string"},
+                "Direccion": { "bsonType": "string" , 
+                description: "'Direccion' must be of type string"},
+                "Telefono": { "bsonType": "number" , 
+                description: "'Telefono' must be of type number"}
+           }
+        }
+    },
+    validationAction: "error",
+    validationLevel: "strict",
+});
+use("db_campus_alquiler");
+db.createCollection("automovil", {
+    validator: {
+        $jsonSchema: {
+           bsonType: "object",
+           required: [ "_id", "ID_Automovil", "Marca", "Modelo", "Anio", "Tipo", "Capacidad", "Precio_Diario" ],
+           title: "automovil Validation",
+           properties: {
+                "_id": { "bsonType": "number" , 
+                description: "'_id' must be of type number"},
+                "ID_Automovil": { "bsonType": "number" , 
+                description: "'ID_Automovil' must be of type number"},
+                "Marca": { "bsonType": "string" , 
+                description: "'Marca' must be of type string"},
+                "Modelo": { "bsonType": "string" , 
+                description: "'Modelo' must be of type string"},
+                "Anio": { "bsonType": "number" , 
+                description: "'Anio' must be of type number"},
+                "Tipo": { "bsonType": "string" , 
+                description: "'Tipo' must be of type string"},
+                "Capacidad": { "bsonType": "number" , 
+                description: "'Capacidad' must be of type number"},
+                "Precio_Diario": { "bsonType": "number" , 
+                description: "'Precio_Diario' must be of type number decimal",
+                "pattern": "^[0-9]+(\\.[0-9]{1,2})?$" }
+           }
+        }
+    },
+    validationAction: "error",
+    validationLevel: "strict",
+});
+use("db_campus_alquiler");
+db.createCollection("sucursal_automovil",{
+    validator: {
+        $jsonSchema: {
+           bsonType: "object",
+           required: [ "_id", "sucursal_id", "automovil_id", "Cantidad_Disponible"],
+           title: "sucursal_automovil Validation",
+           properties: {
+                "_id": { "bsonType": "number" , 
+                description: "'_id' must be of type number",
+                "pattern": "^[1-9][0-9]*$"},
+                "sucursal_id": { "bsonType": "number" , 
+                description: "'sucursal_id' must be of type number",
+                "pattern": "^[1-9][0-9]*$"},
+                "automovil_id": { "bsonType": "number" , 
+                description: "'automovil_id' must be of type number",
+                "pattern": "^[1-9][0-9]*$"},
+                "Cantidad_Disponible": { "bsonType": "number" , 
+                description: "'Cantidad_Disponible' must be of type number",
+                "pattern": "^[1-9][0-9]*$"}
+           }
+        }
+    },
+    validationAction: "error",
+    validationLevel: "strict",
+});
+use("db_campus_alquiler");
+db.createCollection("cliente", {
+    validator: {
+        $jsonSchema: {
+           bsonType: "object",
+           required: [ "_id", "ID_Cliente", "Nombre", "Apellido", "DNI", "Direccion", "Telefono", "Email"],
+           title: "cliente Validation",
+           properties: {
+                "_id": { "bsonType": "number" , 
+                description: "'_id' must be of type number",
+                "pattern": "^[1-9][0-9]*$"},
+                "ID_Cliente": { "bsonType": "number" , 
+                description: "'ID_Cliente' must be of type number",
+                "pattern": "^[1-9][0-9]*$"},
+                "Nombre": { "bsonType": "string" , 
+                description: "'Nombre' must be of type string",},
+                "Apellido": { "bsonType": "string" , 
+                description: "'Apellido' must be of type string",},
+                "DNI": { "bsonType": "string" , 
+                description: "'Cantidad_Disponible' must be of type string",
+                "pattern": "^[1-9][0-9]*$"},
+                "Direccion": { "bsonType": "string" , 
+                description: "'Direccion' must be of type string"},
+                "Telefono": { "bsonType": "string" , 
+                description: "'Cantidad_Disponible' must be of type string",
+                "pattern": "^[1-9][0-9]*$"},
+                "Email": { "bsonType": "string" , 
+                description: "'Email' must be of type string"}
+           }
+        }
+    },
+    validationAction: "error",
+    validationLevel: "strict",
+});
+use("db_campus_alquiler");
+db.createCollection("alquiler", {
+    validator: {
+        $jsonSchema: {
+           bsonType: "object",
+           required: [ "_id", "ID_Alquiler", "cliente_id", "automovil_id", "Fecha_Inicio", "Fecha_Fin", "Costo_Total", "Estado"],
+           title: "alquiler Validation",
+           properties: {
+                "_id": { "bsonType": "number" , 
+                description: "'_id' must be of type number",
+                "pattern": "^[1-9][0-9]*$"},
+                "ID_Alquiler": { "bsonType": "number" , 
+                description: "'ID_Alquiler' must be of type number",
+                "pattern": "^[1-9][0-9]*$"},
+                "cliente_id": { "bsonType": "number" , 
+                description: "'cliente_id' must be of type number",
+                "pattern": "^[1-9][0-9]*$"},
+                "automovil_id": { "bsonType": "number" , 
+                description: "'automovil_id' must be of type number",
+                "pattern": "^[1-9][0-9]*$"},
+                "Fecha_Inicio": { "bsonType": "date" , 
+                description: "'Estado' must be of type date"},
+                "Fecha_Fin": { "bsonType": "date" , 
+                description: "'Estado' must be of type date"},
+                "Costo_Total": { "bsonType": "number" , 
+                description: "'Costo_Total' must be of type number decimal",
+                "pattern": "^[0-9]+(\\.[0-9]{1,2})?$" },
+                "Estado": { "bsonType": "string" , 
+                description: "'Estado' must be of type string"}
+           }
+        }
+    },
+    validationAction: "error",
+    validationLevel: "strict",
+});
+use("db_campus_alquiler");
+db.createCollection("reserva", {
+    validator: {
+        $jsonSchema: {
+           bsonType: "object",
+           required: [ "_id", "ID_Reserva", "cliente_id", "automovil_id", "Fecha_Reserva", "Fecha_Inicio", "Fecha_Fin", "Estado"],
+           title: "reserva Validation",
+           properties: {
+                "_id": { "bsonType": "number" , 
+                description: "'_id' must be of type number",
+                "pattern": "^[1-9][0-9]*$"},
+                "ID_Reserva": { "bsonType": "number" , 
+                description: "'ID_Reserva' must be of type number",
+                "pattern": "^[1-9][0-9]*$"},
+                "cliente_id": { "bsonType": "number" , 
+                description: "'cliente_id' must be of type number",
+                "pattern": "^[1-9][0-9]*$"},
+                "automovil_id": { "bsonType": "number" , 
+                description: "'automovil_id' must be of type number",
+                "pattern": "^[1-9][0-9]*$"},
+                "Fecha_Reserva": { "bsonType": "date" , 
+                description: "'Estado' must be of type date"},
+                "Fecha_Inicio": { "bsonType": "date" , 
+                description: "'Estado' must be of type date"},
+                "Fecha_Fin": { "bsonType": "date" , 
+                description: "'Estado' must be of type date"},
+                "Estado": { "bsonType": "string" , 
+                description: "'Estado' must be of type string"}
+           }
+        }
+    },
+    validationAction: "error",
+    validationLevel: "strict",
+});
+use("db_campus_alquiler");
+db.createCollection("empleado", {
+    validator: {
+        $jsonSchema: {
+           bsonType: "object",
+           required: [ "_id", "ID_Empleado", "Nombre", "Apellido", "DNI", "Direccion", "Telefono", "Cargo"],
+           title: "empleado Validation",
+           properties: {
+                "_id": { "bsonType": "number" , 
+                description: "'_id' must be of type number",
+                "pattern": "^[1-9][0-9]*$"},
+                "ID_Empleado": { "bsonType": "number" , 
+                description: "'ID_Empleado' must be of type number",
+                "pattern": "^[1-9][0-9]*$"},
+                "Nombre": { "bsonType": "string" , 
+                description: "'Nombre' must be of type string",},
+                "Apellido": { "bsonType": "string" , 
+                description: "'Apellido' must be of type string",},
+                "DNI": { "bsonType": "string" , 
+                description: "'Cantidad_Disponible' must be of type string",
+                "pattern": "^[1-9][0-9]*$"},
+                "Direccion": { "bsonType": "string" , 
+                description: "'Direccion' must be of type string"},
+                "Telefono": { "bsonType": "string" , 
+                description: "'Cantidad_Disponible' must be of type string",
+                "pattern": "^[1-9][0-9]*$"},
+                "Cargo": { "bsonType": "string" , 
+                description: "'Cargo' must be of type string"}
+           }
+        }
+    },
+    validationAction: "error",
+    validationLevel: "strict",
+});
+use("db_campus_alquiler");
+db.createCollection("registro_entrega",{
+    validator: {
+        $jsonSchema: {
+           bsonType: "object",
+           required: [ "_id", "ID_Registro", "alquiler_id", "empleado_id", "Fecha_Entrega", "Combustible_Entregado", "Kilometraje_Entregado"],
+           title: "registro_entrega Validation",
+           properties: {
+                "_id": { "bsonType": "number" , 
+                description: "'_id' must be of type number",
+                "pattern": "^[1-9][0-9]*$"},
 
-db.createCollection("sucursal");
-db.createCollection("automovil");
-db.createCollection("sucursal_automovil");
-db.createCollection("reserva");
-db.createCollection("cliente");
-db.createCollection("alquiler");
-db.createCollection("registro_devolucion");
-db.createCollection("registro_entrega");
-db.createCollection("empleado");
+                "ID_Registro": { "bsonType": "number" , 
+                description: "'ID_Registro' must be of type number",
+                "pattern": "^[1-9][0-9]*$"},
+
+                "alquiler_id": { "bsonType": "number" , 
+                description: "'alquiler_id' must be of type number",
+                "pattern": "^[1-9][0-9]*$"},
+
+                "empleado_id": { "bsonType": "number" , 
+                description: "'empleado_id' must be of type number",
+                "pattern": "^[1-9][0-9]*$"},
+
+                "Fecha_Entrega": { "bsonType": "date" , 
+                description: "'Fecha_Entrega' must be of type date"},
+
+                "Combustible_Entregado": { "bsonType": "number" , 
+                description: "'Combustible_Entregado' must be of type number decimal",
+                "pattern": "^[0-9]+(\\.[0-9]{1,2})?$" },
+
+                "Kilometraje_Entregado": { "bsonType": "number" , 
+                description: "'Kilometraje_Entregado' must be of type number",
+                "pattern": "^[1-9][0-9]*$"}
+
+                
+           }
+        }
+    },
+    validationAction: "error",
+    validationLevel: "strict",
+});
+use("db_campus_alquiler");
+db.createCollection("registro_devolucion", {
+    validator: {
+        $jsonSchema: {
+           bsonType: "object",
+           required: [ "_id", "ID_Registro", "alquiler_id", "empleado_id", "Fecha_Devolucion", "Combustible_Devuelto", "Kilometraje_Devuelto", "Monto_Adicional"],
+           title: "registro_devolucion Validation",
+           properties: {
+                "_id": { "bsonType": "number" , 
+                description: "'_id' must be of type number",
+                "pattern": "^[1-9][0-9]*$"},
+
+                "ID_Registro": { "bsonType": "number" , 
+                description: "'ID_Registro' must be of type number",
+                "pattern": "^[1-9][0-9]*$"},
+
+                "alquiler_id": { "bsonType": "number" , 
+                description: "'alquiler_id' must be of type number",
+                "pattern": "^[1-9][0-9]*$"},
+
+                "empleado_id": { "bsonType": "number" , 
+                description: "'empleado_id' must be of type number",
+                "pattern": "^[1-9][0-9]*$"},
+
+                "Fecha_Devolucion": { "bsonType": "date" , 
+                description: "'Fecha_Entrega' must be of type date"},
+
+                "Combustible_Devuelto": { "bsonType": "number" , 
+                description: "'Combustible_Devuelto' must be of type number decimal",
+                "pattern": "^[0-9]+(\\.[0-9]{1,2})?$" },
+
+                "Kilometraje_Devuelto": { "bsonType": "number" , 
+                description: "'Kilometraje_Devuelto' must be of type number",
+                "pattern": "^[1-9][0-9]*$"},
+
+                "Monto_Adicional": { "bsonType": "number" , 
+                description: "'Monto_Adicional' must be of type number decimal",
+                "pattern": "^[0-9]+(\\.[0-9]{1,2})?$" }
+
+                
+           }
+        }
+    },
+    validationAction: "error",
+    validationLevel: "strict",
+});
 
 // Inyeccion de data para la coleccion sucursal
 
@@ -71,7 +366,7 @@ db.automovil.insertMany([
         Marca: "Toyota",
         Modelo: "Toyota Corolla",
         Anio: 2023,
-        Tipo: "	Turismo",
+        Tipo: "Turismo",
         Capacidad: 4,
         Precio_Diario: 200000.00
     },
@@ -81,7 +376,7 @@ db.automovil.insertMany([
         Marca: "Toyota",
         Modelo: "Toyota RAV4",
         Anio: 2023,
-        Tipo: "	SUV",
+        Tipo: "SUV",
         Capacidad: 5,
         Precio_Diario: 150000.00
     },
@@ -91,7 +386,7 @@ db.automovil.insertMany([
         Marca: "Toyota",
         Modelo: "Toyota Prius",
         Anio: 2023,
-        Tipo: "	Híbrido",
+        Tipo: "Híbrido",
         Capacidad: 5,
         Precio_Diario: 350000.00
     },
@@ -101,11 +396,12 @@ db.automovil.insertMany([
         Marca: "Toyota",
         Modelo: "Toyota Highlander",
         Anio: 2023,
-        Tipo: "	SUV",
+        Tipo: "SUV",
         Capacidad: 7,
         Precio_Diario: 390000.00
     }
 ]);
+
 
 // Inyeccion de data para la coleccion sucursal_automovil
 
