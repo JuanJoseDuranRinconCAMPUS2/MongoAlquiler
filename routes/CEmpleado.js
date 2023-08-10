@@ -60,4 +60,31 @@ AppEmpleado.delete('/DeleteEmpleado', limitDColecciones(), async (req, res) =>{
       }
 })
 
+//6
+//  Listar los empleados con el cargo de "Vendedor".
+
+AppEmpleado.get('/Empleado_Vendedores', limitGColecciones(), async (req, res) =>{
+  if(!req.rateLimit) return;
+  let empleado = db.collection("empleado");
+  let result = await empleado.find({ Cargo: { $eq: "Vendedor" }}).toArray();
+  res.send(result)
+
+})
+
+//13
+// Mostrar los empleados con cargo de "Gerente" o "Asistente". 
+
+AppEmpleado.get('/GerenteOrAsistente', limitGColecciones(), async (req, res) =>{
+  if(!req.rateLimit) return;
+  let empleado = db.collection("empleado");
+  let result = await empleado.find({
+    $or: [
+        {Cargo: { $eq: "Gerente" }}, 
+        {Cargo: { $eq: "Vendedor" }}
+    ]
+}).sort( { _id: 1 } ).toArray();
+  res.send(result)
+
+})
+
 export default AppEmpleado;

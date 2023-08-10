@@ -60,4 +60,118 @@ AppAutomovil.delete('/DeleteAutomovil', limitDColecciones(), async (req, res) =>
       }
 })
 
+// 2
+// Obtener todos los automóviles disponibles para alquiler.
+AppAutomovil.get('/AutomovilesDisp', limitGColecciones(), async (req, res) =>{
+  if(!req.rateLimit) return;
+  let automovil = db.collection("automovil");
+  let result = await automovil.aggregate([  
+      {    
+          $lookup: {      
+              from: "alquiler",     
+              localField: "_id",      
+              foreignField: "automovil_id",      
+              as: "Alquileres"   
+          }  
+      },  
+      {
+          $match: {Alquileres: { $ne: [] }}
+      },
+      {    
+          $project: {     
+              Marca: 1,      
+              Modelo: 1,     
+              Anio: 1,      
+              Tipo: 1,      
+              Capacidad: 1,      
+              Precio_Diario: 1,      
+              Alquileres: {
+                  $map: {
+                    input: "$Alquileres",
+                    as: "alquiler",
+                    in: {
+                      id: "$$alquiler._id",
+                      Fecha_Inicio: "$$alquiler.Fecha_Inicio",
+                      Fecha_Fin: "$$alquiler.Fecha_Fin",
+                      Costo_Total: "$$alquiler.Costo_Total",
+                      Estado: "$$alquiler.Estado"
+                    }
+                  }
+              }
+          } 
+      } 
+  ]).toArray();
+  res.send(result)
+})
+
+//10
+// Mostrar todos los automóviles con una capacidad mayor a 5 personas. 
+
+AppAutomovil.get('/AutosMax5', limitGColecciones(), async (req, res) =>{
+  if(!req.rateLimit) return;
+  let automovil = db.collection("automovil");
+  let result = await automovil.find({ Capacidad: { $gt: 5 }}).sort( { _id: 1 } ).toArray();
+  res.send(result)
+
+})
+
+//15
+// Listar todos los automóviles ordenados por marca y modelo.
+
+AppAutomovil.get('/AutosMarcasModelos', limitGColecciones(), async (req, res) =>{
+  if(!req.rateLimit) return;
+  let automovil = db.collection("automovil");
+  let result = await automovil.find().sort( { Marca: 1, Modelo: 1 } ).toArray();
+  res.send(result)
+
+})
+
+//18
+// Mostrar los automóviles con capacidad igual a 5 personas y que estén disponibles
+
+AppAutomovil.get('/DispoAutosMax5', limitGColecciones(), async (req, res) =>{
+  if(!req.rateLimit) return;
+  let automovil = db.collection("automovil");
+  let result = await automovil.aggregate([  
+    {    
+        $lookup: {      
+            from: "alquiler",     
+            localField: "_id",      
+            foreignField: "automovil_id",      
+            as: "Alquileres"   
+         }  
+    },  
+    {
+        $match: {Alquileres: { $ne: [] }, Capacidad: {$gte: 5}}
+    },
+    {
+        $unwind: "$Alquileres"
+    },
+    {
+        $group: {
+            _id: "$_id",
+            Marca: {
+                $first: "$Marca"
+            },
+            Modelo: {
+                $first: "$Modelo"
+            },
+            Año: {
+                $first: "$Anio"
+            },
+            Tipo: {
+                $first: "$Tipo"
+            },
+            Capacidad: {
+                $first: "$Capacidad"
+            },
+            Precio_Diario: {
+                $first: "$Precio_Diario"
+            }
+        }
+    }
+]).sort( { Marca: 1, Modelo: 1 } ).toArray();
+  res.send(result)
+
+})
 export default AppAutomovil;

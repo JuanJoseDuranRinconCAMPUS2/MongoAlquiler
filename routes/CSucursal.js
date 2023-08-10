@@ -60,4 +60,101 @@ AppSucursal.delete('/DeleteSucursal', limitDColecciones(), async (req, res) =>{
       }
 })
 
+//7
+//  Mostrar la cantidad total de automóviles disponibles en cada sucursal. 
+
+AppSucursal.get('/CantidadAutosSucursal', limitGColecciones(), async (req, res) =>{
+  if(!req.rateLimit) return;
+  let sucursal = db.collection("sucursal");
+  let result = await sucursal.aggregate([  
+      {    
+          $lookup: {      
+              from: "sucursal_automovil",     
+              localField: "_id",      
+              foreignField: "sucursal_id",      
+              as: "Cantidad_Automovil"   
+          }  
+      },  
+      {
+          $match: {CantididadAutomovil: { $ne: [] }}
+      },
+      {
+          $unwind: "$Cantidad_Automovil"
+      },
+      {    
+          $project: {     
+              "Cantidad_Automovil.sucursal_id": 0,
+              "Cantidad_Automovil.automovil_id": 0
+          } 
+      },
+      {
+          $group: {
+              _id: "$_id",
+              Nombre: {
+                  $first: "$Nombre"
+              },
+              Direccion: {
+                  $first: "$Direccion"
+              },
+              Telefono: {
+                  $first: "$Telefono"
+              },
+              Cantidad_Automovil: {
+                  $first: "$Cantidad_Automovil"
+              },
+              Total_Automoviles: {
+                  $sum: "$Cantidad_Automovil.Cantidad_Disponible"
+              }
+          }
+      }
+    ]).toArray();
+  res.send(result)
+
+})
+
+//16
+// Mostrar la cantidad total de automóviles en cada sucursal junto con su dirección.
+
+AppSucursal.get('/CantidadTotalAutosDirect', limitGColecciones(), async (req, res) =>{
+    if(!req.rateLimit) return;
+    let sucursal = db.collection("sucursal");
+    let result = await sucursal.aggregate([  
+        {    
+            $lookup: {      
+                from: "sucursal_automovil",     
+                localField: "_id",      
+                foreignField: "sucursal_id",      
+                as: "Cantidad_Automovil"   
+             }  
+        },  
+        {
+            $match: {CantididadAutomovil: { $ne: [] }}
+        },
+        {
+            $unwind: "$Cantidad_Automovil"
+        },
+        {    
+            $project: {     
+                "Cantidad_Automovil.sucursal_id": 0,
+                "Cantidad_Automovil.automovil_id": 0
+            } 
+        },
+        {
+            $group: {
+                _id: "$_id",
+                Nombre: {
+                    $first: "$Nombre"
+                },
+                Direccion: {
+                    $first: "$Direccion"
+                },
+                Total_Automoviles: {
+                    $sum: "$Cantidad_Automovil.Cantidad_Disponible"
+                }
+            }
+        }
+    ]).sort( { _id: 1 } ).toArray();
+    res.send(result)
+
+})
 export default AppSucursal;
