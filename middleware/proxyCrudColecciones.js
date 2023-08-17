@@ -3,6 +3,7 @@ import 'reflect-metadata';
 import { plainToClass } from "class-transformer";
 import { validatePostAlquiler, validatePutAlquiler } from "../controllers/vCrudAlquiler.js";
 import { validatePostAuto, validatePutAuto } from '../controllers/vCrudAutomovil.js';
+import { validatePostCliente, validatePutCliente} from '../controllers/vCrudCliente.js'
 import { validate } from 'class-validator';
 
 const proxyPutColeccion = express();
@@ -12,6 +13,8 @@ const Validaciones = {
     "alquileresPost" : validatePostAlquiler,
     "automovilesPut" : validatePutAuto,
     "automovilesPost" : validatePostAuto,
+    "clientePut" : validatePutCliente,
+    "clientePost" : validatePostCliente,
 }
 
 //proxy usado para validar los metodos put y post
