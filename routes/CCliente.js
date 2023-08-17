@@ -1,7 +1,8 @@
 import { Router } from "express";
 import {limitGColecciones, limitPColecciones, limitDColecciones} from '../middleware/limit.js';
-import bodyParser  from 'body-parser';
-import { Collection, ObjectId } from 'mongodb';
+import { proxyPostC } from "../middleware/proxyCrudColecciones.js";
+import {proxyQueryID, proxyBodyID} from "../middleware/proxyUniversal.js"
+import errorcontroller from "../middleware/ErroresMongo.js";
 import { con } from '../db/atlas.js';
 
 const AppCliente = Router();
@@ -18,19 +19,19 @@ AppCliente.get('/GetCliente', limitGColecciones(), async (req, res) =>{
 
 })
 
-AppCliente.post('/PostCliente', limitPColecciones(250, "cliente"), async (req, res) =>{
+AppCliente.post('/PostCliente', limitPColecciones(300, "cliente"), proxyPostC("clientePost"), async (req, res) =>{
     if(!req.rateLimit) return;
     let cliente = db.collection("cliente");
-
+    let data = {...req.body, _id : req.body.ID_Cliente}
     try {
-        let result = await cliente.insertOne(req.body)
-        res.send(`Data Enviada correctamente`);
+        let result = await cliente.insertOne(data)
+        res.status(200).send({status: 200, message: "Data enviada Correctamente"});
       } catch (error) {
-        res.send(`Error al guardar la data, _id ya se encuentra en uso`);
+        errorcontroller(error, res);
       }
 })
 
-AppCliente.put('/PutCliente', limitPColecciones(250, "cliente"), async (req, res) =>{
+AppCliente.put('/PutCliente', limitPColecciones(250, "cliente"),  proxyPostC("clientePut"), proxyQueryID, async (req, res) =>{
     if(!req.rateLimit) return;
     let cliente = db.collection("cliente");
     const id = parseInt(req.query.id, 10);
@@ -38,28 +39,28 @@ AppCliente.put('/PutCliente', limitPColecciones(250, "cliente"), async (req, res
         
         let result = await cliente.updateOne({ _id: id }, { $set: req.body })
         if (result.modifiedCount > 0) {
-            res.send("Documento actualizado correctamente");
+            res.status(200).send({status: 200, message: "Documento actualizado correctamente"});
         } else {
-            res.send("El documento no pudo ser encontrado o no se realizaron cambios");
+            res.status(404).send({status: 404, message: "El documento no pudo ser encontrado o no se realizaron cambios"});
         }
       } catch (error) {
-        res.send(`Error al Actualizar la data`);
+        errorcontroller(error, res);
       }
 })
 
-AppCliente.delete('/DeleteCliente', limitDColecciones(), async (req, res) =>{
+AppCliente.delete('/DeleteCliente', limitDColecciones(), proxyBodyID, async (req, res) =>{
     if(!req.rateLimit) return;
     let cliente = db.collection("cliente");
     const id = parseInt(req.body.id, 10);
     try {
         let result = await cliente.deleteOne({ _id: id })
         if (result.deletedCount > 0) {
-            res.send("Documento ha sido eliminado correctamente");
+            res.status(200).send({status: 200, message: "Documento eliminado correctamente"});
         } else {
-            res.send("El documento no pudo ser encontrado o no se elimino el documento");
+            res.status(404).send({status: 404, message: "El documento no pudo ser encontrado o no se elimino el documento"});
         }
       } catch (error) {
-        res.send(`Error al Actualizar la data`);
+        errorcontroller(error, res);
       }
 })
 
@@ -138,7 +139,7 @@ AppCliente.get('/Clientes_Alquiler', limitGColecciones(), async (req, res) =>{
 
 //19
 // Obtener los datos del cliente que realizó la reserva con ID_Reserva específico.
-AppCliente.get('/DatosClientesPorReserva', limitGColecciones(), async (req, res) =>{
+AppCliente.get('/DatosClientesPorReserva', limitGColecciones(), proxyQueryID, async (req, res) =>{
     if(!req.rateLimit) return;
     let cliente = db.collection("cliente");
     let id_Reserva = parseInt(req.query.id_Reserva, 10);
