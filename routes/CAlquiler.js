@@ -1,7 +1,8 @@
 import { Router } from "express";
 import {limitGColecciones, limitPColecciones, limitDColecciones} from '../middleware/limit.js';
-import bodyParser  from 'body-parser';
-import { Collection, ObjectId } from 'mongodb';
+import { proxyPostC } from "../middleware/proxyCrudColecciones.js";
+import {proxyQueryID, proxyBodyID} from "../middleware/proxyUniversal.js"
+import errorcontroller from "../middleware/ErroresMongo.js";
 import { con } from '../db/atlas.js';
 
 const AppAlquiler = Router();
@@ -15,36 +16,37 @@ AppAlquiler.get('/GetAlquiler', limitGColecciones(), async (req, res) =>{
 
 })
 
-AppAlquiler.post('/PostAlquiler', limitPColecciones(250, "Alquiler"), async (req, res) =>{
+AppAlquiler.post('/PostAlquiler', limitPColecciones(250, "Alquiler"), proxyPostC("alquileresPost"),async (req, res) =>{
     if(!req.rateLimit) return;
     let alquiler = db.collection("alquiler");
-
+    let data = {...req.body, _id : req.body.ID_Alquiler, Fecha_Inicio: new Date(req.body.Fecha_Inicio), Fecha_Fin: new Date(req.body.Fecha_Fin)}
     try {
-        let result = await alquiler.insertOne(req.body)
-        res.send(`Data Enviada correctamente`);
+        let result = await alquiler.insertOne(data)
+        res.status(200).send({status: 200, message: "Data enviada Correctamente"});
       } catch (error) {
-        res.send(`Error al guardar la data, _id ya se encuentra en uso`);
+        errorcontroller(error, res);
       }
 })
 
-AppAlquiler.put('/PutAlquiler', limitPColecciones(250, "Alquiler"), async (req, res) =>{
+AppAlquiler.put('/PutAlquiler', limitPColecciones(250, "Alquiler"), proxyPostC("alquileresPut"), proxyQueryID, async (req, res) =>{
     if(!req.rateLimit) return;
     let alquiler = db.collection("alquiler");
     const id = parseInt(req.query.id, 10);
+    let data = {...req.body, Fecha_Inicio: new Date(req.body.Fecha_Inicio), Fecha_Fin: new Date(req.body.Fecha_Fin)}
     try {
         
-        let result = await alquiler.updateOne({ _id: id }, { $set: req.body })
+        let result = await alquiler.updateOne({ _id: id }, { $set: data })
         if (result.modifiedCount > 0) {
             res.send("Documento actualizado correctamente");
         } else {
             res.send("El documento no pudo ser encontrado o no se realizaron cambios");
         }
       } catch (error) {
-        res.send(`Error al Actualizar la data`);
+        errorcontroller(error, res);
       }
 })
 
-AppAlquiler.delete('/DeleteAlquiler', limitDColecciones(), async (req, res) =>{
+AppAlquiler.delete('/DeleteAlquiler', limitDColecciones(), proxyBodyID, async (req, res) =>{
     if(!req.rateLimit) return;
     let alquiler = db.collection("alquiler");
     const id = parseInt(req.body.id, 10);
@@ -56,7 +58,7 @@ AppAlquiler.delete('/DeleteAlquiler', limitDColecciones(), async (req, res) =>{
             res.send("El documento no pudo ser encontrado o no se elimino el documento");
         }
       } catch (error) {
-        res.send(`Error al Actualizar la data`);
+        errorcontroller(error, res);
       }
 })
 
@@ -113,7 +115,7 @@ AppAlquiler.get('/AlquilerCliente', limitGColecciones(), async (req, res) =>{
 //5
 //  Obtener los detalles del alquiler con el ID_Alquilerespecífico. 
 
-AppAlquiler.get('/AlquilerEspecifico', limitGColecciones(), async (req, res) =>{
+AppAlquiler.get('/AlquilerEspecifico', limitGColecciones(), proxyQueryID, async (req, res) =>{
     if(!req.rateLimit) return;
     let alquiler = db.collection("alquiler");
     const id = parseInt(req.query.id, 10);
@@ -125,7 +127,7 @@ AppAlquiler.get('/AlquilerEspecifico', limitGColecciones(), async (req, res) =>{
 //8
 //  Obtener el costo total de un alquiler específico.
 
-AppAlquiler.get('/CostoEspecifico', limitGColecciones(), async (req, res) =>{
+AppAlquiler.get('/CostoEspecifico', limitGColecciones(),  proxyQueryID,async (req, res) =>{
     if(!req.rateLimit) return;
     let alquiler = db.collection("alquiler");
     const id = parseInt(req.query.id, 10);
