@@ -1,7 +1,8 @@
 import { Router } from "express";
 import {limitGColecciones, limitPColecciones, limitDColecciones} from '../middleware/limit.js';
-import bodyParser  from 'body-parser';
-import { Collection, ObjectId } from 'mongodb';
+import { proxyPostC } from "../middleware/proxyCrudColecciones.js";
+import {proxyQueryID, proxyBodyID} from "../middleware/proxyUniversal.js"
+import errorcontroller from "../middleware/ErroresMongo.js";
 import { con } from '../db/atlas.js';
 
 const AppEmpleado = Router();
@@ -15,19 +16,19 @@ AppEmpleado.get('/GetEmpleado', limitGColecciones(), async (req, res) =>{
 
 })
 
-AppEmpleado.post('/PostEmpleado', limitPColecciones(240, "empleado"), async (req, res) =>{
+AppEmpleado.post('/PostEmpleado', limitPColecciones(350, "empleado"), proxyPostC("empleadoPost"), async (req, res) =>{
     if(!req.rateLimit) return;
     let empleado = db.collection("empleado");
-
+    let data = {...req.body, _id : req.body.ID_Empleado}
     try {
-        let result = await empleado.insertOne(req.body)
-        res.send(`Data Enviada correctamente`);
+        let result = await empleado.insertOne(data)
+        res.status(200).send({status: 200, message: "Data enviada Correctamente"});
       } catch (error) {
-        res.send(`Error al guardar la data, _id ya se encuentra en uso`);
+        errorcontroller(error, res);
       }
 })
 
-AppEmpleado.put('/PutEmpleado', limitPColecciones(240, "empleado"), async (req, res) =>{
+AppEmpleado.put('/PutEmpleado', limitPColecciones(280, "empleado"),proxyPostC("empleadoPut"), proxyQueryID, async (req, res) =>{
     if(!req.rateLimit) return;
     let empleado = db.collection("empleado");
     const id = parseInt(req.query.id, 10);
@@ -35,28 +36,28 @@ AppEmpleado.put('/PutEmpleado', limitPColecciones(240, "empleado"), async (req, 
         
         let result = await empleado.updateOne({ _id: id }, { $set: req.body })
         if (result.modifiedCount > 0) {
-            res.send("Documento actualizado correctamente");
+            res.status(200).send({status: 200, message: "Documento actualizado correctamente"});
         } else {
-            res.send("El documento no pudo ser encontrado o no se realizaron cambios");
+            res.status(404).send({status: 404, message: "El documento no pudo ser encontrado o no se realizaron cambios"});
         }
       } catch (error) {
-        res.send(`Error al Actualizar la data`);
+        errorcontroller(error, res);
       }
 })
 
-AppEmpleado.delete('/DeleteEmpleado', limitDColecciones(), async (req, res) =>{
+AppEmpleado.delete('/DeleteEmpleado', limitDColecciones(), proxyBodyID, async (req, res) =>{
     if(!req.rateLimit) return;
     let empleado = db.collection("empleado");
     const id = parseInt(req.body.id, 10);
     try {
         let result = await empleado.deleteOne({ _id: id })
         if (result.deletedCount > 0) {
-            res.send("Documento ha sido eliminado correctamente");
+            res.status(200).send({status: 200, message: "Documento eliminado correctamente"});
         } else {
-            res.send("El documento no pudo ser encontrado o no se elimino el documento");
+            res.status(404).send({status: 404, message: "El documento no pudo ser encontrado o no se elimino el documento"});
         }
       } catch (error) {
-        res.send(`Error al Actualizar la data`);
+        errorcontroller(error, res);
       }
 })
 
