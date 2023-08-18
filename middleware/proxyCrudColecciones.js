@@ -5,6 +5,7 @@ import { validatePostAlquiler, validatePutAlquiler } from "../controllers/vCrudA
 import { validatePostAuto, validatePutAuto } from '../controllers/vCrudAutomovil.js';
 import { validatePostCliente, validatePutCliente} from '../controllers/vCrudCliente.js';
 import { validatePostEmpleado, validatePutEmpleado} from '../controllers/vCrudEmpleado.js'
+import { validatePostRegistroDevolucion, validatePutRegistroDevolucion} from '../controllers/vCrudRegistroDevolucion.js'
 
 import { validate } from 'class-validator';
 
@@ -17,6 +18,8 @@ const Validaciones = {
     "clientePost" : validatePostCliente,
     "empleadoPut" : validatePutEmpleado,
     "empleadoPost" : validatePostEmpleado,
+    "registroDevPut" : validatePutRegistroDevolucion,
+    "registroDevPost" : validatePostRegistroDevolucion,
 }
 
 //proxy usado para validar los metodos put y post
