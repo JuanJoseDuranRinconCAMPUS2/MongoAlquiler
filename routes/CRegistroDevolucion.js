@@ -1,7 +1,8 @@
 import { Router } from "express";
 import {limitGColecciones, limitPColecciones, limitDColecciones} from '../middleware/limit.js';
-import bodyParser  from 'body-parser';
-import { Collection, ObjectId } from 'mongodb';
+import { proxyPostC } from "../middleware/proxyCrudColecciones.js";
+import {proxyQueryID, proxyBodyID} from "../middleware/proxyUniversal.js"
+import errorcontroller from "../middleware/ErroresMongo.js";
 import { con } from '../db/atlas.js';
 
 const AppRegistroDevolucion = Router();
@@ -15,48 +16,51 @@ AppRegistroDevolucion.get('/GetRegistroDevolucion', limitGColecciones(), async (
 
 })
 
-AppRegistroDevolucion.post('/PostRegistroDevolucion', limitPColecciones(280, "registro_devolucion"), async (req, res) =>{
+AppRegistroDevolucion.post('/PostRegistroDevolucion', limitPColecciones(320, "registro_devolucion"), proxyPostC("registroDevPost"), async (req, res) =>{
     if(!req.rateLimit) return;
     let registro_devolucion = db.collection("registro_devolucion");
+    let data = {...req.body, _id : req.body.ID_Registro, Fecha_Devolucion: new Date(req.body.Fecha_Devolucion)}
 
     try {
-        let result = await registro_devolucion.insertOne(req.body)
-        res.send(`Data Enviada correctamente`);
+        let result = await registro_devolucion.insertOne(data)
+        res.status(200).send({status: 200, message: "Data enviada Correctamente"});
       } catch (error) {
-        res.send(`Error al guardar la data, _id ya se encuentra en uso`);
+        errorcontroller(error, res); 
       }
 })
 
-AppRegistroDevolucion.put('/PutRegistroDevolucion', limitPColecciones(280, "registro_devolucion"), async (req, res) =>{
+AppRegistroDevolucion.put('/PutRegistroDevolucion', limitPColecciones(300, "registro_devolucion"), proxyPostC("registroDevPut"), proxyQueryID, async (req, res) =>{
     if(!req.rateLimit) return;
     let registro_devolucion = db.collection("registro_devolucion");
+    let data = {...req.body, Fecha_Devolucion: new Date(req.body.Fecha_Devolucion)}
     const id = parseInt(req.query.id, 10);
     try {
         
-        let result = await registro_devolucion.updateOne({ _id: id }, { $set: req.body })
+        let result = await registro_devolucion.updateOne({ _id: id }, { $set: data })
         if (result.modifiedCount > 0) {
-            res.send("Documento actualizado correctamente");
+            res.status(200).send({status: 200, message: "Documento actualizado correctamente"});
         } else {
-            res.send("El documento no pudo ser encontrado o no se realizaron cambios");
+            res.status(404).send({status: 404, message: "El documento no pudo ser encontrado o no se realizaron cambios"});
+
         }
       } catch (error) {
-        res.send(`Error al Actualizar la data`);
+        errorcontroller(error, res);
       }
 })
 
-AppRegistroDevolucion.delete('/DeleteRegistroDevolucion', limitDColecciones(), async (req, res) =>{
+AppRegistroDevolucion.delete('/DeleteRegistroDevolucion', limitDColecciones(), proxyBodyID, async (req, res) =>{
     if(!req.rateLimit) return;
     let registro_devolucion = db.collection("registro_devolucion");
     const id = parseInt(req.body.id, 10);
     try {
         let result = await registro_devolucion.deleteOne({ _id: id })
         if (result.deletedCount > 0) {
-            res.send("Documento ha sido eliminado correctamente");
+            res.status(200).send({status: 200, message: "Documento eliminado correctamente"});
         } else {
-            res.send("El documento no pudo ser encontrado o no se elimino el documento");
+            res.status(404).send({status: 404, message: "El documento no pudo ser encontrado o no se elimino el documento"});
         }
       } catch (error) {
-        res.send(`Error al Actualizar la data`);
+        errorcontroller(error, res);
       }
 })
 
