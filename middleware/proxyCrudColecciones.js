@@ -9,7 +9,7 @@ import { validatePostRegistroDevolucion, validatePutRegistroDevolucion} from '..
 import { validatePostRegistroEntrega, validatePutRegistroEntrega} from '../controllers/vCrudRegistroEnt.js'
 import { validatePostReserva, validatePutReserva } from '../controllers/vCrudReserva.js';
 import { validatePostSucursal, validatePutSucursal } from '../controllers/vCrudSucursal.js';
-
+import { validatePostSucursal_Auto, validatePutSucursal_Auto } from '../controllers/vCrudSucursal_Auto.js';
 import { validate } from 'class-validator';
 
 const Validaciones = {
@@ -29,6 +29,8 @@ const Validaciones = {
     "reservaPost" : validatePostReserva,
     "sucursalPut" : validatePutSucursal,
     "sucursalPost" : validatePostSucursal,
+    "sucursalAutoPut" : validatePutSucursal_Auto,
+    "sucursalAutoPost" : validatePostSucursal_Auto
 }
 
 //proxy usado para validar los metodos put y post
