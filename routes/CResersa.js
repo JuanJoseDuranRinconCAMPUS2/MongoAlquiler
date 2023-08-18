@@ -1,7 +1,8 @@
 import { Router } from "express";
 import {limitGColecciones, limitPColecciones, limitDColecciones} from '../middleware/limit.js';
-import bodyParser  from 'body-parser';
-import { Collection, ObjectId } from 'mongodb';
+import { proxyPostC } from "../middleware/proxyCrudColecciones.js";
+import {proxyQueryID, proxyBodyID} from "../middleware/proxyUniversal.js"
+import errorcontroller from "../middleware/ErroresMongo.js";
 import { con } from '../db/atlas.js';
 
 const AppReserva = Router();
@@ -15,48 +16,49 @@ AppReserva.get('/GetReserva', limitGColecciones(), async (req, res) =>{
 
 })
 
-AppReserva.post('/PostReserva', limitPColecciones(290, "reserva"), async (req, res) =>{
+AppReserva.post('/PostReserva', limitPColecciones(310, "reserva"), proxyPostC("reservaPost"), async (req, res) =>{
     if(!req.rateLimit) return;
     let reserva = db.collection("reserva");
-
+    let data = {...req.body, _id : req.body.ID_Reserva, Fecha_Reserva: new Date(req.body.Fecha_Reserva), Fecha_Inicio: new Date(req.body.Fecha_Inicio), Fecha_Fin: new Date(req.body.Fecha_Fin)}
     try {
-        let result = await reserva.insertOne(req.body)
-        res.send(`Data Enviada correctamente`);
+        let result = await reserva.insertOne(data)
+        res.status(200).send({status: 200, message: "Data enviada Correctamente"});
       } catch (error) {
-        res.send(`Error al guardar la data, _id ya se encuentra en uso`);
+        errorcontroller(error, res);
       }
 })
 
-AppReserva.put('/PutReserva', limitPColecciones(290, "reserva"), async (req, res) =>{
+AppReserva.put('/PutReserva', limitPColecciones(300, "reserva"), proxyPostC("reservaPut"), proxyQueryID, async (req, res) =>{
     if(!req.rateLimit) return;
     let reserva = db.collection("reserva");
     const id = parseInt(req.query.id, 10);
+    let data = {...req.body, Fecha_Reserva: new Date(req.body.Fecha_Reserva), Fecha_Inicio: new Date(req.body.Fecha_Inicio), Fecha_Fin: new Date(req.body.Fecha_Fin)}
     try {
         
-        let result = await reserva.updateOne({ _id: id }, { $set: req.body })
+        let result = await reserva.updateOne({ _id: id }, { $set: data })
         if (result.modifiedCount > 0) {
-            res.send("Documento actualizado correctamente");
+            res.status(200).send({status: 200, message: "Documento actualizado correctamente"});
         } else {
-            res.send("El documento no pudo ser encontrado o no se realizaron cambios");
+            res.status(404).send({status: 404, message: "El documento no pudo ser encontrado o no se realizaron cambios"});
         }
       } catch (error) {
-        res.send(`Error al Actualizar la data`);
+        errorcontroller(error, res);
       }
 })
 
-AppReserva.delete('/DeleteReserva', limitDColecciones(), async (req, res) =>{
+AppReserva.delete('/DeleteReserva', limitDColecciones(), proxyBodyID, async (req, res) =>{
     if(!req.rateLimit) return;
     let reserva = db.collection("reserva");
     const id = parseInt(req.body.id, 10);
     try {
         let result = await reserva.deleteOne({ _id: id })
         if (result.deletedCount > 0) {
-            res.send("Documento ha sido eliminado correctamente");
+            res.status(200).send({status: 200, message: "Documento eliminado correctamente"});
         } else {
-            res.send("El documento no pudo ser encontrado o no se elimino el documento");
+            res.status(404).send({status: 404, message: "El documento no pudo ser encontrado o no se elimino el documento"});
         }
       } catch (error) {
-        res.send(`Error al Actualizar la data`);
+        errorcontroller(error, res);
       }
 })
 
@@ -126,7 +128,7 @@ AppReserva.get('/ReservasPendientesCyA', limitGColecciones(), async (req, res) =
 //12
 // Listar las reservas pendientes realizadas por un cliente específico.
 
-AppReserva.get('/ClienteEspecificoPendiente', limitGColecciones(), async (req, res) =>{
+AppReserva.get('/ClienteEspecificoPendiente', limitGColecciones(), proxyQueryID, async (req, res) =>{
     if(!req.rateLimit) return;
     let reserva = db.collection("reserva");
     const cliente_id = parseInt(req.query.cliente_id, 10);
