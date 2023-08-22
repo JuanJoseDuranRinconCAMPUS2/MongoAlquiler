@@ -2,13 +2,14 @@ import { Router } from "express";
 import {limitGColecciones, limitPColecciones, limitDColecciones} from '../middleware/limit.js';
 import { proxyPostC } from "../middleware/proxyCrudColecciones.js";
 import {proxyQueryID, proxyBodyID} from "../middleware/proxyUniversal.js"
+import { proxyEndpointVerify } from "../middleware/proxyManejoTokens.js";
 import errorcontroller from "../middleware/ErroresMongo.js";
 import { con } from '../db/atlas.js';
 
 const AppRegistroEntrega = Router();
 let db = await con();
 
-AppRegistroEntrega.get('/GetRegistroEntrega', limitGColecciones(), async (req, res) =>{
+AppRegistroEntrega.get('/GetRegistroEntrega', limitGColecciones(), proxyEndpointVerify(0, "RegistroEntrega"), async (req, res) =>{
     if(!req.rateLimit) return;
     let registro_entrega = db.collection("registro_entrega");
     let result = await registro_entrega.find({}).sort( { _id: 1 } ).toArray();
@@ -16,7 +17,7 @@ AppRegistroEntrega.get('/GetRegistroEntrega', limitGColecciones(), async (req, r
 
 })
 
-AppRegistroEntrega.post('/PostRegistroEntrega', limitPColecciones(250, "registro_entrega"), proxyPostC("registroEntPost"), async (req, res) =>{
+AppRegistroEntrega.post('/PostRegistroEntrega', limitPColecciones(250, "registro_entrega"), proxyPostC("registroEntPost"), proxyEndpointVerify(1, "RegistroEntrega", "Admin"), async (req, res) =>{
     if(!req.rateLimit) return;
     let registro_entrega = db.collection("registro_entrega");
     let data = {...req.body, _id : req.body.ID_Registro, Fecha_Entrega: new Date(req.body.Fecha_Entrega)}
@@ -28,7 +29,7 @@ AppRegistroEntrega.post('/PostRegistroEntrega', limitPColecciones(250, "registro
       }
 })
 
-AppRegistroEntrega.put('/PutRegistroEntrega', limitPColecciones(250, "registro_entrega"), proxyPostC("registroEntPut"), proxyQueryID, async (req, res) =>{
+AppRegistroEntrega.put('/PutRegistroEntrega', limitPColecciones(250, "registro_entrega"), proxyPostC("registroEntPut"), proxyQueryID, proxyEndpointVerify(1, "RegistroEntrega", "Admin"), async (req, res) =>{
     if(!req.rateLimit) return;
     let registro_entrega = db.collection("registro_entrega");
     let data = {...req.body, Fecha_Entrega: new Date(req.body.Fecha_Entrega)}
@@ -47,7 +48,7 @@ AppRegistroEntrega.put('/PutRegistroEntrega', limitPColecciones(250, "registro_e
       }
 })
 
-AppRegistroEntrega.delete('/DeleteRegistroEntrega', limitDColecciones(), proxyBodyID, async (req, res) =>{
+AppRegistroEntrega.delete('/DeleteRegistroEntrega', limitDColecciones(), proxyBodyID, proxyEndpointVerify(1, "RegistroEntrega", "Admin"), async (req, res) =>{
     if(!req.rateLimit) return;
     let registro_entrega = db.collection("registro_entrega");
     const id = parseInt(req.body.id, 10);
