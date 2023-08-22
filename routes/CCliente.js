@@ -2,6 +2,7 @@ import { Router } from "express";
 import {limitGColecciones, limitPColecciones, limitDColecciones} from '../middleware/limit.js';
 import { proxyPostC } from "../middleware/proxyCrudColecciones.js";
 import {proxyQueryID, proxyBodyID} from "../middleware/proxyUniversal.js"
+import { proxyEndpointVerify } from "../middleware/proxyManejoTokens.js";
 import errorcontroller from "../middleware/ErroresMongo.js";
 import { con } from '../db/atlas.js';
 
@@ -11,7 +12,7 @@ let db = await con();
 //1
 // Mostrar todos los clientes registrados en la base de datos
 
-AppCliente.get('/GetCliente', limitGColecciones(), async (req, res) =>{
+AppCliente.get('/GetCliente', limitGColecciones(), proxyEndpointVerify(0, "Cliente"), async (req, res) =>{
     if(!req.rateLimit) return;
     let cliente = db.collection("cliente");
     let result = await cliente.find({}).sort( { _id: 1 } ).toArray();
@@ -19,7 +20,7 @@ AppCliente.get('/GetCliente', limitGColecciones(), async (req, res) =>{
 
 })
 
-AppCliente.post('/PostCliente', limitPColecciones(300, "cliente"), proxyPostC("clientePost"), async (req, res) =>{
+AppCliente.post('/PostCliente', limitPColecciones(300, "cliente"), proxyPostC("clientePost"), proxyEndpointVerify(1, "Cliente", "Admin"), async (req, res) =>{
     if(!req.rateLimit) return;
     let cliente = db.collection("cliente");
     let data = {...req.body, _id : req.body.ID_Cliente}
@@ -31,7 +32,7 @@ AppCliente.post('/PostCliente', limitPColecciones(300, "cliente"), proxyPostC("c
       }
 })
 
-AppCliente.put('/PutCliente', limitPColecciones(250, "cliente"),  proxyPostC("clientePut"), proxyQueryID, async (req, res) =>{
+AppCliente.put('/PutCliente', limitPColecciones(250, "cliente"),  proxyPostC("clientePut"), proxyQueryID, proxyEndpointVerify(1, "Cliente", "Admin"), async (req, res) =>{
     if(!req.rateLimit) return;
     let cliente = db.collection("cliente");
     const id = parseInt(req.query.id, 10);
@@ -48,7 +49,7 @@ AppCliente.put('/PutCliente', limitPColecciones(250, "cliente"),  proxyPostC("cl
       }
 })
 
-AppCliente.delete('/DeleteCliente', limitDColecciones(), proxyBodyID, async (req, res) =>{
+AppCliente.delete('/DeleteCliente', limitDColecciones(), proxyBodyID, proxyEndpointVerify(1, "Cliente", "Admin"), async (req, res) =>{
     if(!req.rateLimit) return;
     let cliente = db.collection("cliente");
     const id = parseInt(req.body.id, 10);
@@ -72,7 +73,7 @@ AppCliente.delete('/DeleteCliente', limitDColecciones(), proxyBodyID, async (req
 // 22554451
 // 45897812564
 // 125233544
-AppCliente.get('/ClienteDNI', limitGColecciones(), async (req, res) =>{
+AppCliente.get('/ClienteDNI', limitGColecciones(), proxyEndpointVerify(0, "Cliente"), async (req, res) =>{
   if(!req.rateLimit) return;
   let cliente = db.collection("cliente");
   const DNI = String(req.query.DNI);
@@ -85,7 +86,7 @@ AppCliente.get('/ClienteDNI', limitGColecciones(), async (req, res) =>{
 //14
 // Obtener los datos de los clientes que realizaron al menos un alquiler
 
-AppCliente.get('/Clientes_Alquiler', limitGColecciones(), async (req, res) =>{
+AppCliente.get('/Clientes_Alquiler', limitGColecciones(), proxyEndpointVerify(0, "Cliente"), async (req, res) =>{
   if(!req.rateLimit) return;
   let cliente = db.collection("cliente");
   let result = await cliente.aggregate([  
@@ -139,7 +140,7 @@ AppCliente.get('/Clientes_Alquiler', limitGColecciones(), async (req, res) =>{
 
 //19
 // Obtener los datos del cliente que realizó la reserva con ID_Reserva específico.
-AppCliente.get('/DatosClientesPorReserva', limitGColecciones(), proxyQueryID, async (req, res) =>{
+AppCliente.get('/DatosClientesPorReserva', limitGColecciones(), proxyQueryID, proxyEndpointVerify(0, "Cliente"), async (req, res) =>{
     if(!req.rateLimit) return;
     let cliente = db.collection("cliente");
     let id_Reserva = parseInt(req.query.id_Reserva, 10);
