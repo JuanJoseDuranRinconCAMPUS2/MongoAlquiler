@@ -11,6 +11,7 @@ import AppReserva from './routes/CResersa.js';
 import AppSucursal from './routes/CSucursal.js';
 import AppSucursal_Auto from './routes/CSucursal_Auto.js';
 import AppCrearUsuario from './routes/CrearUsuario.js';
+import AppIngresoUsuario from './routes/IngresarUsuario.js';
 
 console.clear();
 dotnev.config();
@@ -34,7 +35,7 @@ AlquilerApi.use('/Sucursal_Auto', AppSucursal_Auto);
 //Rutas de validacion
 // ════════ ⋆★⋆ ════════
 AlquilerApi.use('/CrearUsuario', AppCrearUsuario);
-// AlquilerApi.use('/IngresarUsuario', AppIngresoUsuario);
+AlquilerApi.use('/IngresarUsuario', AppIngresoUsuario);
 // ════════ ⋆★⋆ ════════
 
 
