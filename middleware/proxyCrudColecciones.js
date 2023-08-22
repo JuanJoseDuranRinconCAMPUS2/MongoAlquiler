@@ -10,11 +10,13 @@ import { validatePostRegistroEntrega, validatePutRegistroEntrega} from '../contr
 import { validatePostReserva, validatePutReserva } from '../controllers/vCrudReserva.js';
 import { validatePostSucursal, validatePutSucursal } from '../controllers/vCrudSucursal.js';
 import { validatePostSucursal_Auto, validatePutSucursal_Auto } from '../controllers/vCrudSucursal_Auto.js';
+import { validateIngresoU } from "../controllers/vIngresoUsuario.js";
 import { validateCreacionU } from "../controllers/vCrearUsuarios.js";
 import { validate } from 'class-validator';
 
 const Validaciones = {
     "validateCreacionUsuario" : validateCreacionU,
+    "validateIngresoUsuario" : validateIngresoU,
     "alquileresPut" : validatePutAlquiler,
     "alquileresPost" : validatePostAlquiler,
     "automovilesPut" : validatePutAuto,
