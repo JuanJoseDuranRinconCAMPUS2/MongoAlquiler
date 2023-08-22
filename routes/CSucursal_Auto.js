@@ -2,13 +2,14 @@ import { Router } from "express";
 import {limitGColecciones, limitPColecciones, limitDColecciones} from '../middleware/limit.js';
 import { proxyPostC } from "../middleware/proxyCrudColecciones.js";
 import {proxyQueryID, proxyBodyID} from "../middleware/proxyUniversal.js"
+import { proxyEndpointVerify } from "../middleware/proxyManejoTokens.js";
 import errorcontroller from "../middleware/ErroresMongo.js";
 import { con } from '../db/atlas.js';
 
 const AppSucursal_Auto = Router();
 let db = await con();
 
-AppSucursal_Auto.get('/GetSucursal_Auto', limitGColecciones(), async (req, res) =>{
+AppSucursal_Auto.get('/GetSucursal_Auto', limitGColecciones(), proxyEndpointVerify(0, "Sucursal"), async (req, res) =>{
     if(!req.rateLimit) return;
     let sucursal_automovil = db.collection("sucursal_automovil");
     let result = await sucursal_automovil.find({}).sort( { _id: 1 } ).toArray();
@@ -16,7 +17,7 @@ AppSucursal_Auto.get('/GetSucursal_Auto', limitGColecciones(), async (req, res) 
 
 })
 
-AppSucursal_Auto.post('/PostSucursal_Auto', limitPColecciones(250, "sucursal_automovil"), proxyPostC("sucursalAutoPost"), async (req, res) =>{
+AppSucursal_Auto.post('/PostSucursal_Auto', limitPColecciones(250, "sucursal_automovil"), proxyPostC("sucursalAutoPost"), proxyEndpointVerify(1, "Sucursal", "Admin"), async (req, res) =>{
     if(!req.rateLimit) return;
     let sucursal_automovil = db.collection("sucursal_automovil");
     try {
@@ -27,7 +28,7 @@ AppSucursal_Auto.post('/PostSucursal_Auto', limitPColecciones(250, "sucursal_aut
       }
 })
 
-AppSucursal_Auto.put('/PutSucursal_Auto', limitPColecciones(200, "sucursal_automovil"), proxyPostC("sucursalAutoPut"), proxyQueryID, async (req, res) =>{
+AppSucursal_Auto.put('/PutSucursal_Auto', limitPColecciones(200, "sucursal_automovil"), proxyPostC("sucursalAutoPut"), proxyQueryID, proxyEndpointVerify(1, "Sucursal", "Admin"), async (req, res) =>{
     if(!req.rateLimit) return;
     let sucursal_automovil = db.collection("sucursal_automovil");
     const id = parseInt(req.query.id, 10);
@@ -44,7 +45,7 @@ AppSucursal_Auto.put('/PutSucursal_Auto', limitPColecciones(200, "sucursal_autom
     }
 })
 
-AppSucursal_Auto.delete('/DeleteSucursal_Auto', limitDColecciones(), proxyBodyID, async (req, res) =>{
+AppSucursal_Auto.delete('/DeleteSucursal_Auto', limitDColecciones(), proxyBodyID, proxyEndpointVerify(1, "Sucursal", "Admin"), async (req, res) =>{
     if(!req.rateLimit) return;
     let sucursal_automovil = db.collection("sucursal_automovil");
     const id = parseInt(req.body.id, 10);
