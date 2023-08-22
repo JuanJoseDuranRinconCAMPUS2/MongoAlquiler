@@ -1,5 +1,6 @@
 import { Router } from "express";
 import {limitGColecciones, limitPColecciones, limitDColecciones} from '../middleware/limit.js';
+import { proxyEndpointVerify } from "../middleware/proxyManejoTokens.js";
 import { proxyPostC } from "../middleware/proxyCrudColecciones.js";
 import {proxyQueryID, proxyBodyID} from "../middleware/proxyUniversal.js"
 import errorcontroller from "../middleware/ErroresMongo.js";
@@ -8,7 +9,7 @@ import { con } from '../db/atlas.js';
 const AppAlquiler = Router();
 let db = await con();
 
-AppAlquiler.get('/GetAlquiler', limitGColecciones(), async (req, res) =>{
+AppAlquiler.get('/GetAlquiler', limitGColecciones(), proxyEndpointVerify(0, "Alquiler"), async (req, res) =>{
     if(!req.rateLimit) return;
     let alquiler = db.collection("alquiler");
     let result = await alquiler.find({}).sort( { _id: 1 } ).toArray();
@@ -16,7 +17,7 @@ AppAlquiler.get('/GetAlquiler', limitGColecciones(), async (req, res) =>{
 
 })
 
-AppAlquiler.post('/PostAlquiler', limitPColecciones(250, "Alquiler"), proxyPostC("alquileresPost"),async (req, res) =>{
+AppAlquiler.post('/PostAlquiler', limitPColecciones(250, "Alquiler"), proxyPostC("alquileresPost"), proxyEndpointVerify(1, "Alquiler", "Admin"), async (req, res) =>{
     if(!req.rateLimit) return;
     let alquiler = db.collection("alquiler");
     let data = {...req.body, _id : req.body.ID_Alquiler, Fecha_Inicio: new Date(req.body.Fecha_Inicio), Fecha_Fin: new Date(req.body.Fecha_Fin)}
@@ -28,7 +29,7 @@ AppAlquiler.post('/PostAlquiler', limitPColecciones(250, "Alquiler"), proxyPostC
       }
 })
 
-AppAlquiler.put('/PutAlquiler', limitPColecciones(250, "Alquiler"), proxyPostC("alquileresPut"), proxyQueryID, async (req, res) =>{
+AppAlquiler.put('/PutAlquiler', limitPColecciones(250, "Alquiler"), proxyPostC("alquileresPut"), proxyQueryID, proxyEndpointVerify(1, "Alquiler", "Admin"), async (req, res) =>{
     if(!req.rateLimit) return;
     let alquiler = db.collection("alquiler");
     const id = parseInt(req.query.id, 10);
@@ -46,7 +47,7 @@ AppAlquiler.put('/PutAlquiler', limitPColecciones(250, "Alquiler"), proxyPostC("
       }
 })
 
-AppAlquiler.delete('/DeleteAlquiler', limitDColecciones(), proxyBodyID, async (req, res) =>{
+AppAlquiler.delete('/DeleteAlquiler', limitDColecciones(), proxyBodyID, proxyEndpointVerify(1, "Alquiler", "Admin"),  async (req, res) =>{
     if(!req.rateLimit) return;
     let alquiler = db.collection("alquiler");
     const id = parseInt(req.body.id, 10);
@@ -65,7 +66,7 @@ AppAlquiler.delete('/DeleteAlquiler', limitDColecciones(), proxyBodyID, async (r
 // 3
 //Listar todos los alquileres activos junto con los datos de los clientes relacionados. 
 
-AppAlquiler.get('/AlquilerCliente', limitGColecciones(), async (req, res) =>{
+AppAlquiler.get('/AlquilerCliente', limitGColecciones(), proxyEndpointVerify(0, "Alquiler"), async (req, res) =>{
   if(!req.rateLimit) return;
   let alquiler = db.collection("alquiler");
   let result = await alquiler.aggregate([  
@@ -115,7 +116,7 @@ AppAlquiler.get('/AlquilerCliente', limitGColecciones(), async (req, res) =>{
 //5
 //  Obtener los detalles del alquiler con el ID_Alquilerespecífico. 
 
-AppAlquiler.get('/AlquilerEspecifico', limitGColecciones(), proxyQueryID, async (req, res) =>{
+AppAlquiler.get('/AlquilerEspecifico', limitGColecciones(), proxyQueryID, proxyEndpointVerify(0, "Alquiler"), async (req, res) =>{
     if(!req.rateLimit) return;
     let alquiler = db.collection("alquiler");
     const id = parseInt(req.query.id, 10);
@@ -127,7 +128,7 @@ AppAlquiler.get('/AlquilerEspecifico', limitGColecciones(), proxyQueryID, async 
 //8
 //  Obtener el costo total de un alquiler específico.
 
-AppAlquiler.get('/CostoEspecifico', limitGColecciones(),  proxyQueryID,async (req, res) =>{
+AppAlquiler.get('/CostoEspecifico', limitGColecciones(), proxyQueryID, proxyEndpointVerify(0, "Alquiler"), async (req, res) =>{
     if(!req.rateLimit) return;
     let alquiler = db.collection("alquiler");
     const id = parseInt(req.query.id, 10);
@@ -139,7 +140,7 @@ AppAlquiler.get('/CostoEspecifico', limitGColecciones(),  proxyQueryID,async (re
 //11
 // Obtener los detalles del alquiler que tiene fecha de inicio en '2023-07-05'.
 
-AppAlquiler.get('/Alquiler2023-07-05', limitGColecciones(), async (req, res) =>{
+AppAlquiler.get('/Alquiler2023-07-05', limitGColecciones(), proxyEndpointVerify(0, "Alquiler"), async (req, res) =>{
     if(!req.rateLimit) return;
     let alquiler = db.collection("alquiler");
     let result = await alquiler.find({ Fecha_Inicio: { $eq : new Date('2023-07-05') }}).sort( { _id: 1 } ).toArray();
@@ -150,7 +151,7 @@ AppAlquiler.get('/Alquiler2023-07-05', limitGColecciones(), async (req, res) =>{
 //17
 // Obtener la cantidad total de alquileres registrados en la base de datos.
 
-AppAlquiler.get('/TotalAlquileres', limitGColecciones(), async (req, res) =>{
+AppAlquiler.get('/TotalAlquileres', limitGColecciones(), proxyEndpointVerify(0, "Alquiler"), async (req, res) =>{
     if(!req.rateLimit) return;
     let alquiler = db.collection("alquiler");
     let TotalAlquileres = await alquiler.countDocuments({});
@@ -161,7 +162,7 @@ AppAlquiler.get('/TotalAlquileres', limitGColecciones(), async (req, res) =>{
 //20
 // Listar los alquileres con fecha de inicio entre '2023-07-05' y '2023-07-10'.
 
-AppAlquiler.get('/AlquileresEntreFechas', limitGColecciones(), async (req, res) =>{
+AppAlquiler.get('/AlquileresEntreFechas', limitGColecciones(), proxyEndpointVerify(0, "Alquiler"), async (req, res) =>{
     if(!req.rateLimit) return;
     let alquiler = db.collection("alquiler");
     let result = await alquiler.find({
