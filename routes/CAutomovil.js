@@ -2,13 +2,14 @@ import { Router } from "express";
 import {limitGColecciones, limitPColecciones, limitDColecciones} from '../middleware/limit.js';
 import { proxyPostC } from "../middleware/proxyCrudColecciones.js";
 import {proxyQueryID, proxyBodyID} from "../middleware/proxyUniversal.js"
+import { proxyEndpointVerify } from "../middleware/proxyManejoTokens.js";
 import errorcontroller from "../middleware/ErroresMongo.js";
 import { con } from '../db/atlas.js';
 
 const AppAutomovil = Router();
 let db = await con();
 
-AppAutomovil.get('/GetAutomovil', limitGColecciones(), async (req, res) =>{
+AppAutomovil.get('/GetAutomovil', limitGColecciones(), proxyEndpointVerify(0, "Automovil"), async (req, res) =>{
     if(!req.rateLimit) return;
     let automovil = db.collection("automovil");
     let result = await automovil.find({}).sort( { _id: 1 } ).toArray();
@@ -16,7 +17,7 @@ AppAutomovil.get('/GetAutomovil', limitGColecciones(), async (req, res) =>{
 
 })
 
-AppAutomovil.post('/PostAutomovil', limitPColecciones(280, "automovil"), proxyPostC("automovilesPost"), async (req, res) =>{
+AppAutomovil.post('/PostAutomovil', limitPColecciones(280, "automovil"), proxyPostC("automovilesPost"), proxyEndpointVerify(1, "Automovil", "Admin"), async (req, res) =>{
     if(!req.rateLimit) return;
     let automovil = db.collection("automovil");
     let data = {...req.body, _id : req.body.ID_Automovil}
@@ -28,7 +29,7 @@ AppAutomovil.post('/PostAutomovil', limitPColecciones(280, "automovil"), proxyPo
       }
 })
 
-AppAutomovil.put('/PutAutomovil', limitPColecciones(280, "automovil"), proxyPostC("automovilesPut"), proxyQueryID, async (req, res) =>{
+AppAutomovil.put('/PutAutomovil', limitPColecciones(280, "automovil"), proxyPostC("automovilesPut"), proxyQueryID, proxyEndpointVerify(1, "Automovil", "Admin"), async (req, res) =>{
     if(!req.rateLimit) return;
     let automovil = db.collection("automovil");
     const id = parseInt(req.query.id, 10);
@@ -45,7 +46,7 @@ AppAutomovil.put('/PutAutomovil', limitPColecciones(280, "automovil"), proxyPost
       }
 })
 
-AppAutomovil.delete('/DeleteAutomovil', limitDColecciones(), proxyBodyID, async (req, res) =>{
+AppAutomovil.delete('/DeleteAutomovil', limitDColecciones(), proxyBodyID, proxyEndpointVerify(1, "Automovil", "Admin"), async (req, res) =>{
     if(!req.rateLimit) return;
     let automovil = db.collection("automovil");
     const id = parseInt(req.body.id, 10);
@@ -64,7 +65,7 @@ AppAutomovil.delete('/DeleteAutomovil', limitDColecciones(), proxyBodyID, async 
 
 // 2
 // Obtener todos los automóviles disponibles para alquiler.
-AppAutomovil.get('/AutomovilesDisp', limitGColecciones(), async (req, res) =>{
+AppAutomovil.get('/AutomovilesDisp', limitGColecciones(), proxyEndpointVerify(0, "Automovil"), async (req, res) =>{
   if(!req.rateLimit) return;
   let automovil = db.collection("automovil");
   let result = await automovil.aggregate([  
@@ -109,7 +110,7 @@ AppAutomovil.get('/AutomovilesDisp', limitGColecciones(), async (req, res) =>{
 //10
 // Mostrar todos los automóviles con una capacidad mayor a 5 personas. 
 
-AppAutomovil.get('/AutosMax5', limitGColecciones(), async (req, res) =>{
+AppAutomovil.get('/AutosMax5', limitGColecciones(), proxyEndpointVerify(0, "Automovil"), async (req, res) =>{
   if(!req.rateLimit) return;
   let automovil = db.collection("automovil");
   let result = await automovil.find({ Capacidad: { $gt: 5 }}).sort( { _id: 1 } ).toArray();
@@ -120,7 +121,7 @@ AppAutomovil.get('/AutosMax5', limitGColecciones(), async (req, res) =>{
 //15
 // Listar todos los automóviles ordenados por marca y modelo.
 
-AppAutomovil.get('/AutosMarcasModelos', limitGColecciones(), async (req, res) =>{
+AppAutomovil.get('/AutosMarcasModelos', limitGColecciones(), proxyEndpointVerify(0, "Automovil"), async (req, res) =>{
   if(!req.rateLimit) return;
   let automovil = db.collection("automovil");
   let result = await automovil.find().sort( { Marca: 1, Modelo: 1 } ).toArray();
@@ -131,7 +132,7 @@ AppAutomovil.get('/AutosMarcasModelos', limitGColecciones(), async (req, res) =>
 //18
 // Mostrar los automóviles con capacidad igual a 5 personas y que estén disponibles
 
-AppAutomovil.get('/DispoAutosMax5', limitGColecciones(), async (req, res) =>{
+AppAutomovil.get('/DispoAutosMax5', limitGColecciones(),  proxyEndpointVerify(0, "Automovil"), async (req, res) =>{
   if(!req.rateLimit) return;
   let automovil = db.collection("automovil");
   let result = await automovil.aggregate([  
