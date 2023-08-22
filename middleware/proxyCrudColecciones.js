@@ -10,9 +10,11 @@ import { validatePostRegistroEntrega, validatePutRegistroEntrega} from '../contr
 import { validatePostReserva, validatePutReserva } from '../controllers/vCrudReserva.js';
 import { validatePostSucursal, validatePutSucursal } from '../controllers/vCrudSucursal.js';
 import { validatePostSucursal_Auto, validatePutSucursal_Auto } from '../controllers/vCrudSucursal_Auto.js';
+import { validateCreacionU } from "../controllers/vCrearUsuarios.js";
 import { validate } from 'class-validator';
 
 const Validaciones = {
+    "validateCreacionUsuario" : validateCreacionU,
     "alquileresPut" : validatePutAlquiler,
     "alquileresPost" : validatePostAlquiler,
     "automovilesPut" : validatePutAuto,
@@ -36,7 +38,6 @@ const Validaciones = {
 //proxy usado para validar los metodos put y post
 export function proxyPostC(coleccion) {
     const proxyPostColeccion = express();
-    console.log(coleccion);
     proxyPostColeccion.use(async(req, res, next)=>{
         try {
             let validation = Validaciones[coleccion];
