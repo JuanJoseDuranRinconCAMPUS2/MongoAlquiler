@@ -12,6 +12,7 @@ import AppSucursal from './routes/CSucursal.js';
 import AppSucursal_Auto from './routes/CSucursal_Auto.js';
 import AppCrearUsuario from './routes/CrearUsuario.js';
 import AppIngresoUsuario from './routes/IngresarUsuario.js';
+import { proxyAutorizacionTk } from './middleware/proxyManejoTokens.js';
 
 console.clear();
 dotnev.config();
@@ -20,16 +21,16 @@ const AlquilerApi = express();
 AlquilerApi.use(express.json());
 
 // ════════ ⋆★⋆ ════════
-AlquilerApi.use('/Colecciones', AppColecciones);
-AlquilerApi.use('/Alquiler', AppAlquiler);
-AlquilerApi.use('/Automovil', AppAutomovil);
-AlquilerApi.use('/Cliente', AppCliente);
-AlquilerApi.use('/Empleado', AppEmpleado);
-AlquilerApi.use('/RegistroDevolucion', AppRegistroDevolucion);
-AlquilerApi.use('/RegistroEntrega', AppRegistroEntrega);
-AlquilerApi.use('/Reserva', AppReserva);
-AlquilerApi.use('/Sucursal', AppSucursal);
-AlquilerApi.use('/Sucursal_Auto', AppSucursal_Auto);
+AlquilerApi.use('/Colecciones', proxyAutorizacionTk, AppColecciones);
+AlquilerApi.use('/Alquiler', proxyAutorizacionTk, AppAlquiler);
+AlquilerApi.use('/Automovil', proxyAutorizacionTk, AppAutomovil);
+AlquilerApi.use('/Cliente', proxyAutorizacionTk, AppCliente);
+AlquilerApi.use('/Empleado', proxyAutorizacionTk, AppEmpleado);
+AlquilerApi.use('/RegistroDevolucion', proxyAutorizacionTk, AppRegistroDevolucion);
+AlquilerApi.use('/RegistroEntrega', proxyAutorizacionTk, AppRegistroEntrega);
+AlquilerApi.use('/Reserva', proxyAutorizacionTk, AppReserva);
+AlquilerApi.use('/Sucursal', proxyAutorizacionTk, AppSucursal);
+AlquilerApi.use('/Sucursal_Auto', proxyAutorizacionTk, AppSucursal_Auto);
 // ════════ ⋆★⋆ ════════
 
 //Rutas de validacion
