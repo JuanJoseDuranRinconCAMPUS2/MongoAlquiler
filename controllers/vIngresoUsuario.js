@@ -34,7 +34,7 @@ __decorate([
     Expose({ name: "endPoint_Solicitado" }),
     IsDefined({ message: () => { throw { status: 400, message: 'El parametro endPoint_Solicitado es obligatorio' }; } }),
     MaxLength(255, { message: () => { throw { status: 400, message: 'El parametro endPoint_Solicitado debe tener como máximo 255 caracteres' }; } }),
-    Matches(/^[A-Za-z0-9-\s.,!]+$/, { message: () => { throw { status: 400, message: 'El parametro endPoint_Solicitado debe ser una cadena de texto sin caracteres especiales excepto el "-", puede contener numeros y mayusculas' }; } }),
+    Matches(/^[A-Za-z0-9-\s.,!_]+$/, { message: () => { throw { status: 400, message: 'El parametro endPoint_Solicitado debe ser una cadena de texto sin caracteres especiales excepto el "-", puede contener numeros y mayusculas' }; } }),
     IsNotEmpty({ message: () => { throw { status: 400, message: 'El parametro endPoint_Solicitado no puede estar vacio' }; } }),
     __metadata("design:type", String)
 ], validateIngresoU.prototype, "endPoint", void 0);
