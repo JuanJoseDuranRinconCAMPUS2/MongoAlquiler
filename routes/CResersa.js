@@ -2,13 +2,14 @@ import { Router } from "express";
 import {limitGColecciones, limitPColecciones, limitDColecciones} from '../middleware/limit.js';
 import { proxyPostC } from "../middleware/proxyCrudColecciones.js";
 import {proxyQueryID, proxyBodyID} from "../middleware/proxyUniversal.js"
+import { proxyEndpointVerify } from "../middleware/proxyManejoTokens.js";
 import errorcontroller from "../middleware/ErroresMongo.js";
 import { con } from '../db/atlas.js';
 
 const AppReserva = Router();
 let db = await con();
 
-AppReserva.get('/GetReserva', limitGColecciones(), async (req, res) =>{
+AppReserva.get('/GetReserva', limitGColecciones(), proxyEndpointVerify(0, "Reserva"), async (req, res) =>{
     if(!req.rateLimit) return;
     let reserva = db.collection("reserva");
     let result = await reserva.find({}).sort( { _id: 1 } ).toArray();
@@ -16,7 +17,7 @@ AppReserva.get('/GetReserva', limitGColecciones(), async (req, res) =>{
 
 })
 
-AppReserva.post('/PostReserva', limitPColecciones(310, "reserva"), proxyPostC("reservaPost"), async (req, res) =>{
+AppReserva.post('/PostReserva', limitPColecciones(310, "reserva"), proxyPostC("reservaPost"), proxyEndpointVerify(1, "Reserva", "Admin"), async (req, res) =>{
     if(!req.rateLimit) return;
     let reserva = db.collection("reserva");
     let data = {...req.body, _id : req.body.ID_Reserva, Fecha_Reserva: new Date(req.body.Fecha_Reserva), Fecha_Inicio: new Date(req.body.Fecha_Inicio), Fecha_Fin: new Date(req.body.Fecha_Fin)}
@@ -28,7 +29,7 @@ AppReserva.post('/PostReserva', limitPColecciones(310, "reserva"), proxyPostC("r
       }
 })
 
-AppReserva.put('/PutReserva', limitPColecciones(300, "reserva"), proxyPostC("reservaPut"), proxyQueryID, async (req, res) =>{
+AppReserva.put('/PutReserva', limitPColecciones(300, "reserva"), proxyPostC("reservaPut"), proxyQueryID, proxyEndpointVerify(1, "Reserva", "Admin"), async (req, res) =>{
     if(!req.rateLimit) return;
     let reserva = db.collection("reserva");
     const id = parseInt(req.query.id, 10);
@@ -46,7 +47,7 @@ AppReserva.put('/PutReserva', limitPColecciones(300, "reserva"), proxyPostC("res
       }
 })
 
-AppReserva.delete('/DeleteReserva', limitDColecciones(), proxyBodyID, async (req, res) =>{
+AppReserva.delete('/DeleteReserva', limitDColecciones(), proxyBodyID, proxyEndpointVerify(1, "Reserva", "Admin"), async (req, res) =>{
     if(!req.rateLimit) return;
     let reserva = db.collection("reserva");
     const id = parseInt(req.body.id, 10);
@@ -65,7 +66,7 @@ AppReserva.delete('/DeleteReserva', limitDColecciones(), proxyBodyID, async (req
 //4
 // Mostrar todas las reservas pendientes con los datos del cliente y el automóvil reservado
 
-AppReserva.get('/ReservasPendientesCyA', limitGColecciones(), async (req, res) =>{
+AppReserva.get('/ReservasPendientesCyA', limitGColecciones(), proxyEndpointVerify(0, "Reserva"), async (req, res) =>{
   if(!req.rateLimit) return;
   let reserva = db.collection("reserva");
   let result = await reserva.aggregate([  
@@ -128,10 +129,10 @@ AppReserva.get('/ReservasPendientesCyA', limitGColecciones(), async (req, res) =
 //12
 // Listar las reservas pendientes realizadas por un cliente específico.
 
-AppReserva.get('/ClienteEspecificoPendiente', limitGColecciones(), proxyQueryID, async (req, res) =>{
+AppReserva.get('/ClienteEspecificoPendiente', limitGColecciones(), proxyQueryID, proxyEndpointVerify(0, "Reserva"), async (req, res) =>{
     if(!req.rateLimit) return;
     let reserva = db.collection("reserva");
-    const cliente_id = parseInt(req.query.cliente_id, 10);
+    const cliente_id = parseInt(req.query.id, 10);
     let result = await reserva.find({ Estado: { $eq: "Pendiente" }, cliente_id: { $eq: cliente_id }}).toArray();
     res.send(result)
 
