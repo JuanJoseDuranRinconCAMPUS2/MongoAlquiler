@@ -481,7 +481,7 @@ Presiona cada endpoint para ir a la documentación con sus rutas y funcionalidad
 
 Aqui encontraras el archivo con las colecciones de thunder usadas para ejecutar los endpoints de manera mas facil de este proyecto
 
-[Preciona Aqui Para Ir Directamente Al Archivo](https://github.com/JuanJoseDuranRinconCAMPUS2/bodegasNodeExpress/blob/main/backend/Thunder/thunder-collection_BodegasMongoDB.json)
+[Preciona Aqui Para Ir Directamente Al Archivo](https://github.com/JuanJoseDuranRinconCAMPUS2/MongoAlquiler/blob/main/Thunder/thunder-collection_Alquiler.json)
 
 ## **🚀🎇 Importacion Archivo thunder🎇🚀**
 
