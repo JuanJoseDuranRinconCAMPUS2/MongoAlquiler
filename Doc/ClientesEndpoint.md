@@ -18,7 +18,7 @@
 2. [🚨PostCliente🚨](#postcliente)
 3. [🛃PutCliente🛃](#putcliente) 
 4. [💢DeleteCliente💢](#deletecliente) 
-5. [🚨Consultas Especiales: /Automovil🚨](#consultas-especiales-automovil)   
+5. [🚨Consultas Especiales: /Automovil🚨](#consultas-especiales-cliente)   
 6. [🦊(9)ClienteDNI🦊](#9clientedni)  
 7. [🧧(14)Clientes_Alquiler🧧](#14clientes_alquiler)  
 8. [🎫(19) DatosClientesPorReserva🎫](#19datosclientesporreserva)  
@@ -173,6 +173,8 @@ Si la solicitud es exitosa, recibirás una respuesta positiva
     }
    </details>
 ------
+
+
 ## 🛃/PutCliente
 
 **`PUT /PutCliente`**: El SubEndPoint  `/PutCliente`: es una ruta de la API que permite actualizar un documento en la colección Cliente.
@@ -229,6 +231,8 @@ Si la solicitud es exitosa, recibirás una respuesta positiva
     }
    </details>
 ------
+
+
 ## 💢/DeleteCliente
 
 **`DELETE /DeleteCliente`**: El SubEndPoint  `/DeleteCliente`: es una ruta de la API que permite eliminar un documento en la colección Cliente.
