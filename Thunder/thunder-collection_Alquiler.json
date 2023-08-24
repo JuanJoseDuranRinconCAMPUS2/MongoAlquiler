@@ -1,0 +1,1341 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Alquiler",
+    "dateExported": "2023-08-24T14:26:40.521Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "bec0415b-6370-40fd-8e32-7d5a142791c1",
+            "name": "Colecciones",
+            "containerId": "",
+            "created": "2023-08-07T13:54:27.356Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "b971587c-eca4-4c9e-aae3-9d8abbbea2a0",
+            "name": "alquiler",
+            "containerId": "",
+            "created": "2023-08-07T15:08:43.695Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "3d56c5d7-13a2-460e-b477-95aec57a392c",
+            "name": "Automovil",
+            "containerId": "",
+            "created": "2023-08-07T20:57:29.321Z",
+            "sortNum": 30000
+        },
+        {
+            "_id": "2090aa03-7697-4a1f-bcb9-58dfd37eab2a",
+            "name": "Cliente",
+            "containerId": "",
+            "created": "2023-08-07T21:10:48.802Z",
+            "sortNum": 40000
+        },
+        {
+            "_id": "9913ef26-dc4d-49bf-8ec0-a8dc097e9204",
+            "name": "Empleado",
+            "containerId": "",
+            "created": "2023-08-07T21:17:51.051Z",
+            "sortNum": 50000
+        },
+        {
+            "_id": "cf381ff8-c028-4e31-9f3e-ecbdceef76ec",
+            "name": "RegistroDevolucion",
+            "containerId": "",
+            "created": "2023-08-07T21:44:54.929Z",
+            "sortNum": 60000
+        },
+        {
+            "_id": "96dc8180-cb86-42ae-bcb3-971456520f72",
+            "name": "RegistroEntrega",
+            "containerId": "",
+            "created": "2023-08-07T21:51:45.122Z",
+            "sortNum": 70000
+        },
+        {
+            "_id": "04d6af77-eb98-4af4-9c85-874e3ee7b5c8",
+            "name": "Reserva",
+            "containerId": "",
+            "created": "2023-08-07T22:10:08.280Z",
+            "sortNum": 80000
+        },
+        {
+            "_id": "8d98959e-44d2-4d69-ba32-443bbc249c05",
+            "name": "Sucursal",
+            "containerId": "",
+            "created": "2023-08-07T22:34:12.601Z",
+            "sortNum": 90000
+        },
+        {
+            "_id": "78f506c9-ee5c-4548-9014-77972694c39a",
+            "name": "Sucursal_Auto",
+            "containerId": "",
+            "created": "2023-08-07T23:45:21.602Z",
+            "sortNum": 100000
+        },
+        {
+            "_id": "f643f221-3559-4798-9df0-0a588e9e12b0",
+            "name": "API ACCESS",
+            "containerId": "",
+            "created": "2023-08-22T01:26:11.782Z",
+            "sortNum": 110000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "ff905c5b-5c2d-4ea7-baad-f0a3ef0dd3aa",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "bec0415b-6370-40fd-8e32-7d5a142791c1",
+            "name": "GetColecciones",
+            "url": "http://127.19.8.7:5010/Colecciones/GetColecciones",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-08-07T13:54:37.651Z",
+            "modified": "2023-08-23T12:27:31.319Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IkNvbGVjY2lvbmVzIiwicm9sIjoiQWRtaW4iLCJpYXQiOjE2OTI3OTM2NDMsImV4cCI6MTY5Mjc5NTQ0M30.AGLL76UgrjTm2m2MK1jvqkZGCEkPug0NBtdPqvOdu5o"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "bfd44eaf-6641-4623-8274-71b04649a2f9",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "bec0415b-6370-40fd-8e32-7d5a142791c1",
+            "name": "CrearColeccion",
+            "url": "http://127.19.8.7:5010/Colecciones/CrearColecciones",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-08-07T14:30:22.907Z",
+            "modified": "2023-08-07T14:47:51.801Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"Nombre\" : \"Locales\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "e035f0f8-4f63-4963-9b0c-2397f5dc3dc0",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "b971587c-eca4-4c9e-aae3-9d8abbbea2a0",
+            "name": "GetAlquiler",
+            "url": "http://127.19.8.7:5010/Alquiler/GetAlquiler",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-08-07T15:08:55.313Z",
+            "modified": "2023-08-23T12:52:31.579Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IkFscXVpbGVyIiwicm9sIjoiQWRtaW4iLCJpYXQiOjE2OTI3OTUxMjQsImV4cCI6MTY5Mjc5NjkyNH0.eKDzbHpJFwHXRrd_DUfqwWmulG4a1XpPHdfC44jYQlY"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "ee24a583-c06a-46ba-a8be-957d2463f947",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "3d56c5d7-13a2-460e-b477-95aec57a392c",
+            "name": "GetAutomovil",
+            "url": "http://127.19.8.7:5010/Automovil/GetAutomovil",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-08-07T20:57:29.322Z",
+            "modified": "2023-08-24T01:03:46.831Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IkF1dG9tb3ZpbCIsInJvbCI6IkFkbWluIiwiaWF0IjoxNjkyODM5MDE4LCJleHAiOjE2OTI4NDA4MTh9.WQZICmhSLekYvjnppEt_b18Nc0CcIiGRcI3GwtQUhZA"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "f06fbf1b-6985-4243-b1d6-195c5066eeb2",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "2090aa03-7697-4a1f-bcb9-58dfd37eab2a",
+            "name": "GetCliente",
+            "url": "http://127.19.8.7:5010/Cliente/GetCliente",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-08-07T21:10:48.802Z",
+            "modified": "2023-08-24T01:53:33.254Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IkNsaWVudGUiLCJyb2wiOiJBZG1pbiIsImlhdCI6MTY5Mjg0MjAwMywiZXhwIjoxNjkyODQzODAzfQ.MKiDh3NK8hpI3zV1dUyGLB6UF51Ij0mybkX32DqsTGA"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "fd58f5c5-82cb-4694-b0cc-2b4106b2f8ea",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "9913ef26-dc4d-49bf-8ec0-a8dc097e9204",
+            "name": "GetEmpleado",
+            "url": "http://127.19.8.7:5010/Empleado/GetEmpleado",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-08-07T21:17:51.051Z",
+            "modified": "2023-08-24T11:12:33.863Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IkVtcGxlYWRvIiwicm9sIjoiQWRtaW4iLCJpYXQiOjE2OTI4NzU1MzUsImV4cCI6MTY5Mjg3NzMzNX0.HFpokIbQrVOObOxW3xQW90UVNljKSW03FMi-gkkE95o"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "ea4c518d-c2a7-492f-a863-142bda640fc7",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "cf381ff8-c028-4e31-9f3e-ecbdceef76ec",
+            "name": "GetRegistroDevolucion",
+            "url": "http://127.19.8.7:5010/RegistroDevolucion/GetRegistroDevolucion",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-08-07T21:44:54.929Z",
+            "modified": "2023-08-24T11:55:49.724Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IlJlZ2lzdHJvRGV2b2x1Y2lvbiIsInJvbCI6IkFkbWluIiwiaWF0IjoxNjkyODc4MTQxLCJleHAiOjE2OTI4Nzk5NDF9.Jje82x4TxMb7z3Hi-87G2r_D9xYBrWU89gmmFSWNqeU"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "c9c0474d-ae40-4adc-aa5c-2db4854a2265",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "96dc8180-cb86-42ae-bcb3-971456520f72",
+            "name": "GetRegistroEntrega",
+            "url": "http://127.19.8.7:5010/RegistroEntrega/GetRegistroEntrega",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-08-07T21:51:45.122Z",
+            "modified": "2023-08-24T12:33:54.053Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IlJlZ2lzdHJvRW50cmVnYSIsInJvbCI6IkFkbWluIiwiaWF0IjoxNjkyODgwMzk3LCJleHAiOjE2OTI4ODIxOTd9.v8ZV8-peS3Y0nJ79H1VAxMcutCqC8ZQPHm0vA5LXy14"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "3551eaa5-44fc-47cf-968f-6b109a9e6585",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "04d6af77-eb98-4af4-9c85-874e3ee7b5c8",
+            "name": "GetReserva",
+            "url": "http://127.19.8.7:5010/Reserva/GetReserva",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-08-07T22:10:08.280Z",
+            "modified": "2023-08-24T12:57:48.010Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IlJlc2VydmEiLCJyb2wiOiJBZG1pbiIsImlhdCI6MTY5Mjg4MTg1OCwiZXhwIjoxNjkyODgzNjU4fQ.wS_gpo78U6Io_KpgohjoKQCpdHPeaQ7jlYXSt_kQdRM"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "4c849ab4-3009-4027-837e-d78e913037ac",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "8d98959e-44d2-4d69-ba32-443bbc249c05",
+            "name": "GetSucursal",
+            "url": "http://127.19.8.7:5010/Sucursal/GetSucursal",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-08-07T22:34:12.601Z",
+            "modified": "2023-08-24T13:25:08.258Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IlN1Y3Vyc2FsIiwicm9sIjoiQWRtaW4iLCJpYXQiOjE2OTI4ODM0OTYsImV4cCI6MTY5Mjg4NTI5Nn0.6AdYzKtBSM0SgCGjgrrpsP_lexFWk9D-zouzg5kUAdw"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "77cb7397-e747-488f-a867-3e6db3da6555",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "78f506c9-ee5c-4548-9014-77972694c39a",
+            "name": "GetSucursal_Auto",
+            "url": "http://127.19.8.7:5010/Sucursal_Auto/GetSucursal_Auto",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-08-07T23:45:21.602Z",
+            "modified": "2023-08-24T14:08:55.894Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IlN1Y3Vyc2FsX0F1dG8iLCJyb2wiOiJBZG1pbiIsImlhdCI6MTY5Mjg4NjEwNCwiZXhwIjoxNjkyODg3OTA0fQ.96vnegjHE_yxwxHfmG9XoQIBgGElrXM6iKOrACZ41bw"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "09d0ec73-976f-4b4a-8b66-12ca02c323ae",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "3d56c5d7-13a2-460e-b477-95aec57a392c",
+            "name": "AutomovilesDisp",
+            "url": "http://127.19.8.7:5010/Automovil/AutomovilesDisp",
+            "method": "GET",
+            "sortNum": 25000,
+            "created": "2023-08-10T01:43:43.028Z",
+            "modified": "2023-08-24T01:20:59.131Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IkF1dG9tb3ZpbCIsInJvbCI6IkFkbWluIiwiaWF0IjoxNjkyODM5MDE4LCJleHAiOjE2OTI4NDA4MTh9.WQZICmhSLekYvjnppEt_b18Nc0CcIiGRcI3GwtQUhZA"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "eded718b-8ffa-45c5-a857-a872adc218be",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "b971587c-eca4-4c9e-aae3-9d8abbbea2a0",
+            "name": "AlquilerCliente",
+            "url": "http://127.19.8.7:5010/Alquiler/AlquilerCliente",
+            "method": "GET",
+            "sortNum": 25000,
+            "created": "2023-08-10T01:55:45.589Z",
+            "modified": "2023-08-23T14:13:20.987Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IkFscXVpbGVyIiwicm9sIjoiQWRtaW4iLCJpYXQiOjE2OTI3OTk5ODcsImV4cCI6MTY5MjgwMTc4N30.a-U99Y18oiNGQjkRerNMhAnKkpj4DVFXhVnJS-gdYdM"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "c41b93f2-82c6-47b0-9345-3c976d9d2f92",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "04d6af77-eb98-4af4-9c85-874e3ee7b5c8",
+            "name": "ReservasPendientesCyA",
+            "url": "http://127.19.8.7:5010/Reserva/ReservasPendientesCyA",
+            "method": "GET",
+            "sortNum": 25000,
+            "created": "2023-08-10T01:59:03.324Z",
+            "modified": "2023-08-24T13:03:58.148Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IlJlc2VydmEiLCJyb2wiOiJBZG1pbiIsImlhdCI6MTY5Mjg4MTg1OCwiZXhwIjoxNjkyODgzNjU4fQ.wS_gpo78U6Io_KpgohjoKQCpdHPeaQ7jlYXSt_kQdRM"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "3045e04e-3fa2-43d4-b599-22bae26a5aa5",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "9913ef26-dc4d-49bf-8ec0-a8dc097e9204",
+            "name": "Empleado_Vendedores",
+            "url": "http://127.19.8.7:5010/Empleado/Empleado_Vendedores",
+            "method": "GET",
+            "sortNum": 25000,
+            "created": "2023-08-10T02:08:16.198Z",
+            "modified": "2023-08-24T11:24:03.610Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IkVtcGxlYWRvIiwicm9sIjoiQWRtaW4iLCJpYXQiOjE2OTI4NzU1MzUsImV4cCI6MTY5Mjg3NzMzNX0.HFpokIbQrVOObOxW3xQW90UVNljKSW03FMi-gkkE95o"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "08d62784-0a40-4c0d-84af-f588fa11325a",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "8d98959e-44d2-4d69-ba32-443bbc249c05",
+            "name": "CantidadAutosSucursal",
+            "url": "http://127.19.8.7:5010/Sucursal/CantidadAutosSucursal",
+            "method": "GET",
+            "sortNum": 25000,
+            "created": "2023-08-10T02:10:34.587Z",
+            "modified": "2023-08-24T13:58:40.559Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IlN1Y3Vyc2FsIiwicm9sIjoiQWRtaW4iLCJpYXQiOjE2OTI4ODU1MTEsImV4cCI6MTY5Mjg4NzMxMX0.LOLxFnCSJAmw2WJYFuvwU4sKnA1_rTqoh5HkZYeHUQg"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "edfe9640-2549-4ddf-a000-0c070ea3ebd3",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "2090aa03-7697-4a1f-bcb9-58dfd37eab2a",
+            "name": "ClienteDNI",
+            "url": "http://127.19.8.7:5010/Cliente/ClienteDNI?DNI=343434",
+            "method": "GET",
+            "sortNum": 25000,
+            "created": "2023-08-10T02:27:24.035Z",
+            "modified": "2023-08-24T02:18:13.162Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IkNsaWVudGUiLCJyb2wiOiJBZG1pbiIsImlhdCI6MTY5Mjg0MjAwMywiZXhwIjoxNjkyODQzODAzfQ.MKiDh3NK8hpI3zV1dUyGLB6UF51Ij0mybkX32DqsTGA"
+                }
+            ],
+            "params": [
+                {
+                    "name": "DNI",
+                    "value": "343434",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "5e76fe5f-2832-4107-9c47-cae686aca757",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "b971587c-eca4-4c9e-aae3-9d8abbbea2a0",
+            "name": "AlquilerEspecifico",
+            "url": "http://127.19.8.7:5010/Alquiler/AlquilerEspecifico?id=4",
+            "method": "GET",
+            "sortNum": 27500,
+            "created": "2023-08-10T02:03:22.450Z",
+            "modified": "2023-08-24T00:19:49.288Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IkFscXVpbGVyIiwicm9sIjoiQWRtaW4iLCJpYXQiOjE2OTI4MzYzNjUsImV4cCI6MTY5MjgzODE2NX0.E-C7pNWpaPIjiqAK-_NNU6kEfHlRDCCJLldIcFIVfMo"
+                }
+            ],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "4",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "82b62174-5e04-4383-a202-a2be5552a506",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "3d56c5d7-13a2-460e-b477-95aec57a392c",
+            "name": "AutosMax5",
+            "url": "http://127.19.8.7:5010/Automovil/AutosMax5",
+            "method": "GET",
+            "sortNum": 27500,
+            "created": "2023-08-10T02:35:21.291Z",
+            "modified": "2023-08-24T01:24:50.834Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IkF1dG9tb3ZpbCIsInJvbCI6IkFkbWluIiwiaWF0IjoxNjkyODM5MDE4LCJleHAiOjE2OTI4NDA4MTh9.WQZICmhSLekYvjnppEt_b18Nc0CcIiGRcI3GwtQUhZA"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "ef013162-6131-41a4-af12-5546b1facf78",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "04d6af77-eb98-4af4-9c85-874e3ee7b5c8",
+            "name": "ClienteEspecificoPendiente",
+            "url": "http://127.19.8.7:5010/Reserva/ClienteEspecificoPendiente?id=3",
+            "method": "GET",
+            "sortNum": 27500,
+            "created": "2023-08-10T02:42:18.937Z",
+            "modified": "2023-08-24T13:07:53.418Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IlJlc2VydmEiLCJyb2wiOiJBZG1pbiIsImlhdCI6MTY5Mjg4MTg1OCwiZXhwIjoxNjkyODgzNjU4fQ.wS_gpo78U6Io_KpgohjoKQCpdHPeaQ7jlYXSt_kQdRM"
+                }
+            ],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "3",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "a02f1394-154e-4cf1-8500-8aba4fd07b3e",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "9913ef26-dc4d-49bf-8ec0-a8dc097e9204",
+            "name": "GerenteOrAsistente",
+            "url": "http://127.19.8.7:5010/Empleado/GerenteOrAsistente",
+            "method": "GET",
+            "sortNum": 27500,
+            "created": "2023-08-10T02:44:39.083Z",
+            "modified": "2023-08-24T11:27:29.354Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IkVtcGxlYWRvIiwicm9sIjoiQWRtaW4iLCJpYXQiOjE2OTI4NzU1MzUsImV4cCI6MTY5Mjg3NzMzNX0.HFpokIbQrVOObOxW3xQW90UVNljKSW03FMi-gkkE95o"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "367a86d0-45f1-4659-afe2-cd30f4f675ba",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "2090aa03-7697-4a1f-bcb9-58dfd37eab2a",
+            "name": "Clientes_Alquiler",
+            "url": "http://127.19.8.7:5010/Cliente/Clientes_Alquiler",
+            "method": "GET",
+            "sortNum": 27500,
+            "created": "2023-08-10T02:47:52.508Z",
+            "modified": "2023-08-24T02:22:49.324Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IkNsaWVudGUiLCJyb2wiOiJBZG1pbiIsImlhdCI6MTY5Mjg0MjAwMywiZXhwIjoxNjkyODQzODAzfQ.MKiDh3NK8hpI3zV1dUyGLB6UF51Ij0mybkX32DqsTGA"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "72b4a91b-6a33-47b9-a079-ad5974832852",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "8d98959e-44d2-4d69-ba32-443bbc249c05",
+            "name": "CantidadTotalAutosDirect",
+            "url": "http://127.19.8.7:5010/Sucursal/CantidadTotalAutosDirect",
+            "method": "GET",
+            "sortNum": 27500,
+            "created": "2023-08-10T03:01:12.665Z",
+            "modified": "2023-08-24T13:59:15.005Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IlN1Y3Vyc2FsIiwicm9sIjoiQWRtaW4iLCJpYXQiOjE2OTI4ODU1MTEsImV4cCI6MTY5Mjg4NzMxMX0.LOLxFnCSJAmw2WJYFuvwU4sKnA1_rTqoh5HkZYeHUQg"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "cdeaeffe-ab24-4108-844c-6445ec5c0a53",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "b971587c-eca4-4c9e-aae3-9d8abbbea2a0",
+            "name": "CostoEspecifico",
+            "url": "http://127.19.8.7:5010/Alquiler/CostoEspecifico?id=4",
+            "method": "GET",
+            "sortNum": 28750,
+            "created": "2023-08-10T02:12:25.992Z",
+            "modified": "2023-08-24T00:26:21.429Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IkFscXVpbGVyIiwicm9sIjoiQWRtaW4iLCJpYXQiOjE2OTI4MzYzNjUsImV4cCI6MTY5MjgzODE2NX0.E-C7pNWpaPIjiqAK-_NNU6kEfHlRDCCJLldIcFIVfMo"
+                }
+            ],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "4",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "ca20d66e-e007-415c-b15c-dd643f73a8a7",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "3d56c5d7-13a2-460e-b477-95aec57a392c",
+            "name": "AutosMarcasModelos",
+            "url": "http://127.19.8.7:5010/Automovil/AutosMarcasModelos",
+            "method": "GET",
+            "sortNum": 28750,
+            "created": "2023-08-10T02:54:29.203Z",
+            "modified": "2023-08-24T01:28:02.809Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IkF1dG9tb3ZpbCIsInJvbCI6IkFkbWluIiwiaWF0IjoxNjkyODM5MDE4LCJleHAiOjE2OTI4NDA4MTh9.WQZICmhSLekYvjnppEt_b18Nc0CcIiGRcI3GwtQUhZA"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "13994c62-1447-4013-9556-2b3ab765b996",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "2090aa03-7697-4a1f-bcb9-58dfd37eab2a",
+            "name": "DatosClientesPorReserva",
+            "url": "http://127.19.8.7:5010/Cliente/DatosClientesPorReserva?id=5",
+            "method": "GET",
+            "sortNum": 28750,
+            "created": "2023-08-10T03:14:23.062Z",
+            "modified": "2023-08-24T02:27:27.361Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IkNsaWVudGUiLCJyb2wiOiJBZG1pbiIsImlhdCI6MTY5Mjg0Mzk5NiwiZXhwIjoxNjkyODQ1Nzk2fQ.jYpFpDzIHTY37PNNv_roByNzrdEb34JtkOpigZUWXxA"
+                }
+            ],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "5",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "31b03a8a-8603-4bf0-9801-48660aca2925",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "b971587c-eca4-4c9e-aae3-9d8abbbea2a0",
+            "name": "Alquiler2023-07-05",
+            "url": "http://127.19.8.7:5010/Alquiler/Alquiler2023-07-05",
+            "method": "GET",
+            "sortNum": 29375,
+            "created": "2023-08-10T02:37:32.372Z",
+            "modified": "2023-08-24T00:31:16.887Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IkFscXVpbGVyIiwicm9sIjoiQWRtaW4iLCJpYXQiOjE2OTI4MzYzNjUsImV4cCI6MTY5MjgzODE2NX0.E-C7pNWpaPIjiqAK-_NNU6kEfHlRDCCJLldIcFIVfMo"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "ea039415-a1f4-43f4-91dd-1c84a2e75f56",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "3d56c5d7-13a2-460e-b477-95aec57a392c",
+            "name": "DispoAutosMax5",
+            "url": "http://127.19.8.7:5010/Automovil/DispoAutosMax5",
+            "method": "GET",
+            "sortNum": 29375,
+            "created": "2023-08-10T03:10:25.688Z",
+            "modified": "2023-08-24T01:33:33.298Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IkF1dG9tb3ZpbCIsInJvbCI6IkFkbWluIiwiaWF0IjoxNjkyODM5MDE4LCJleHAiOjE2OTI4NDA4MTh9.WQZICmhSLekYvjnppEt_b18Nc0CcIiGRcI3GwtQUhZA"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "755c62db-e615-4c71-8677-4ebf8037dbad",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "b971587c-eca4-4c9e-aae3-9d8abbbea2a0",
+            "name": "TotalAlquileres",
+            "url": "http://127.19.8.7:5010/Alquiler/TotalAlquileres",
+            "method": "GET",
+            "sortNum": 29687.5,
+            "created": "2023-08-10T03:05:19.321Z",
+            "modified": "2023-08-24T00:35:56.429Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IkFscXVpbGVyIiwicm9sIjoiQWRtaW4iLCJpYXQiOjE2OTI4MzYzNjUsImV4cCI6MTY5MjgzODE2NX0.E-C7pNWpaPIjiqAK-_NNU6kEfHlRDCCJLldIcFIVfMo"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "2d6fe002-1b2b-4dc5-8c3a-c996aade5d5f",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "b971587c-eca4-4c9e-aae3-9d8abbbea2a0",
+            "name": "AlquileresEntreFechas",
+            "url": "http://127.19.8.7:5010/Alquiler/AlquileresEntreFechas",
+            "method": "GET",
+            "sortNum": 29843.8,
+            "created": "2023-08-10T03:16:12.774Z",
+            "modified": "2023-08-24T00:39:23.008Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IkFscXVpbGVyIiwicm9sIjoiQWRtaW4iLCJpYXQiOjE2OTI4MzYzNjUsImV4cCI6MTY5MjgzODE2NX0.E-C7pNWpaPIjiqAK-_NNU6kEfHlRDCCJLldIcFIVfMo"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "a0c0e780-f6e1-45f4-9ba7-bd11372e617b",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "bec0415b-6370-40fd-8e32-7d5a142791c1",
+            "name": "BorrarColeccion",
+            "url": "http://127.19.8.7:5010/Colecciones/BorrarColeccion",
+            "method": "DELETE",
+            "sortNum": 30000,
+            "created": "2023-08-07T14:55:42.097Z",
+            "modified": "2023-08-07T14:55:59.275Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"Nombre\" : \"Locales\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "f0560492-6d90-4c31-b356-ed431f2d1369",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "b971587c-eca4-4c9e-aae3-9d8abbbea2a0",
+            "name": "PostAlquiler",
+            "url": "http://127.19.8.7:5010/Alquiler/PostAlquiler",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-08-07T15:20:48.393Z",
+            "modified": "2023-08-16T23:50:06.744Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"identificacion_Alquiler\": 10,\n    \"identificacion_Cliente\": 2,\n    \"identificacion_Automovil\": 2,\n    \"Fecha_Inicial\": \"2025-07-05\",\n    \"Fecha_Finalizacion\": \"2023-01-01\",\n    \"Costo_Alquiler\": 280000.01,\n    \"Estado_Alquiler\": \"Activo\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "ea6a6787-72df-44be-9820-aee10e2845d5",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "3d56c5d7-13a2-460e-b477-95aec57a392c",
+            "name": "PostAutomovil",
+            "url": "http://127.19.8.7:5010/Automovil/PostAutomovil",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-08-07T20:57:29.323Z",
+            "modified": "2023-08-24T01:06:29.177Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IkF1dG9tb3ZpbCIsInJvbCI6IkFkbWluIiwiaWF0IjoxNjkyODM5MDE4LCJleHAiOjE2OTI4NDA4MTh9.WQZICmhSLekYvjnppEt_b18Nc0CcIiGRcI3GwtQUhZA"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"identificacion_Automovil\": 6,\n    \"marca_Automovil\": \"Toyota\",\n    \"modelo_Automovil\": \"Toyota Sammy\",\n    \"anio_Automovil\": 2023,\n    \"tipo_Automovil\": \"Turismo\",\n    \"capacidad_Automovil\": 4,\n    \"precio_Diario_Automovil\": 250000\n  }",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "74eee9d2-b198-475e-bb71-46014b6e3c39",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "2090aa03-7697-4a1f-bcb9-58dfd37eab2a",
+            "name": "PostCliente",
+            "url": "http://127.19.8.7:5010/Cliente/PostCliente",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-08-07T21:10:48.803Z",
+            "modified": "2023-08-24T02:11:10.083Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IkNsaWVudGUiLCJyb2wiOiJBZG1pbiIsImlhdCI6MTY5Mjg0MjAwMywiZXhwIjoxNjkyODQzODAzfQ.MKiDh3NK8hpI3zV1dUyGLB6UF51Ij0mybkX32DqsTGA"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"identificacion_Cliente\": 7,\n    \"nombre_Cliente\": \"Maria\",\n    \"apellido_Cliente\": \"Rodriguez\",\n    \"identification_Card_Cliente\": \"343434\",\n    \"direccion_Cliente\": \"carreca 11 12-23\",\n    \"telefono_Cliente\": \"232312321\",\n    \"email_Cliente\": \"Maria@gmail.com\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "aab6b8f0-0d78-44fe-bdff-350ab280a670",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "9913ef26-dc4d-49bf-8ec0-a8dc097e9204",
+            "name": "PostEmpleado",
+            "url": "http://127.19.8.7:5010/Empleado/PostEmpleado",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-08-07T21:17:51.052Z",
+            "modified": "2023-08-22T08:10:52.837Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IkNsaWVudGUiLCJyb2wiOiJBZG1pbiIsImlhdCI6MTY5MjY5MTc5OCwiZXhwIjoxNjkyNjkzNTk4fQ.-MeLogw3qpWbTJKLbqM3x3VIH-WyOJ4aT8BTNdstMKk"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"identificacion_Empleado\": 6,\n    \"nombre_Empleado\": \"Angel\",\n    \"apellido_Empleado\": \"ortega\",\n    \"identification_Card_Empleado\": \"7888994\",\n    \"direccion_Empleado\": \"carreca 23 23-11\",\n    \"telefono_Empleado\": \"234231\",\n    \"cargo_Empleado\": \"Asistente\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "30b7bfb0-4627-489c-9ee6-3d5bb6daee2a",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "cf381ff8-c028-4e31-9f3e-ecbdceef76ec",
+            "name": "PostRegistroDevolucion",
+            "url": "http://127.19.8.7:5010/RegistroDevolucion/PostRegistroDevolucion",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-08-07T21:44:54.930Z",
+            "modified": "2023-08-18T00:18:42.671Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"identificacion_RegistroDev\": 6,\n    \"identificacion_Alquiler\": 1,\n    \"identificacion_Empleado\": 2,\n    \"fecha_Dev\": \"2023-01-01\",\n    \"combustible_Dev\": 2.5,\n    \"kilometraje_Dev\": 1566,\n    \"monto_Superior\": 100000\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "1fd42e9c-63ed-484e-be7f-234d5867a7e9",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "96dc8180-cb86-42ae-bcb3-971456520f72",
+            "name": "PostRegistroEntrega",
+            "url": "http://127.19.8.7:5010/RegistroEntrega/PostRegistroEntrega",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-08-07T21:51:45.123Z",
+            "modified": "2023-08-18T01:20:40.876Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"identificacion_RegistroEnt\": 6,\n    \"identificacion_Alquiler\": 4,\n    \"identificacion_Empleado\": 2,\n    \"fecha_Ent\": \"2023-04-07\",\n    \"combustible_Ent\": 11.5,\n    \"kilometraje_Ent\": 5000\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "6a0f04f9-cb32-4a02-95d7-0b252ae38bac",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "04d6af77-eb98-4af4-9c85-874e3ee7b5c8",
+            "name": "PostReserva",
+            "url": "http://127.19.8.7:5010/Reserva/PostReserva",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-08-07T22:10:08.281Z",
+            "modified": "2023-08-18T02:13:14.274Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": " {\n  \"identificacion_Reserva\": 6,\n  \"identificacion_Cliente\": 1,\n  \"identificacion_Automovil\": 4,\n  \"fecha_Res\": \"2023-04-07\",\n  \"fecha_Inicio\": \"2023-05-09\",\n  \"fecha_Fin\": \"2023-12-15\",\n  \"Estado_Reserva\": \"Pendiente\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "350639d9-bf07-49cb-ab7f-b874e16cb768",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "8d98959e-44d2-4d69-ba32-443bbc249c05",
+            "name": "PostSucursal",
+            "url": "http://127.19.8.7:5010/Sucursal/PostSucursal",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-08-07T22:34:12.603Z",
+            "modified": "2023-08-18T02:36:05.805Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"identificacion_Sucursal\": 6,\n    \"nombre_Sucursal\": \"Zona Franca\",\n    \"direccion_Sucursal\": \"Florida\",\n    \"telefono_Sucursal\": 1256544\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "69aeb129-f0ef-40c6-aa98-55619fc0d49e",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "78f506c9-ee5c-4548-9014-77972694c39a",
+            "name": "PostSucursal_Auto",
+            "url": "http://127.19.8.7:5010/Sucursal_Auto/PostSucursal_Auto",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-08-07T23:45:21.604Z",
+            "modified": "2023-08-18T03:00:09.639Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"identificacion_Sucursal_A\": 6,\n    \"identificacion_Sucursal\": 1,\n    \"identificacion_Auto\": 2,\n    \"cantidad_Disp\": 3\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "fa93d494-e46b-49f7-96f7-6249ecafe60f",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "b971587c-eca4-4c9e-aae3-9d8abbbea2a0",
+            "name": "PutAlquiler",
+            "url": "http://127.19.8.7:5010/Alquiler/PutAlquiler?id=7",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2023-08-07T17:06:24.939Z",
+            "modified": "2023-08-23T13:12:32.870Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IkFscXVpbGVyIiwicm9sIjoiQWRtaW4iLCJpYXQiOjE2OTI3OTUxMjQsImV4cCI6MTY5Mjc5NjkyNH0.eKDzbHpJFwHXRrd_DUfqwWmulG4a1XpPHdfC44jYQlY"
+                }
+            ],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "7",
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"identificacion_Cliente\": 5,\n    \"identificacion_Automovil\": 3,\n    \"Fecha_Inicial\": \"1025-07-05\",\n    \"Fecha_Finalizacion\": \"1223-01-01\",\n    \"Costo_Alquiler\": 23244000.00,\n    \"Estado_Alquiler\": \"Muerto\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "23bccfe2-2480-437b-b285-058f2aeefb01",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "b971587c-eca4-4c9e-aae3-9d8abbbea2a0",
+            "name": "DeleteAlquiler",
+            "url": "http://127.19.8.7:5010/Alquiler/DeleteAlquiler",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2023-08-07T20:31:22.855Z",
+            "modified": "2023-08-18T01:28:44.578Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"id\": \"10\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "ce2feaab-4c86-4c97-a701-0ff63f93eef2",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "3d56c5d7-13a2-460e-b477-95aec57a392c",
+            "name": "PutAutomovil",
+            "url": "http://127.19.8.7:5010/Automovil/PutAutomovil?id=6",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2023-08-07T20:57:29.324Z",
+            "modified": "2023-08-24T01:16:16.646Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IkF1dG9tb3ZpbCIsInJvbCI6IkFkbWluIiwiaWF0IjoxNjkyODM5MDE4LCJleHAiOjE2OTI4NDA4MTh9.WQZICmhSLekYvjnppEt_b18Nc0CcIiGRcI3GwtQUhZA"
+                }
+            ],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "6",
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"marca_Automovil\": \"Toyota\",\n    \"modelo_Automovil\": \"Toyota Cautin\",\n    \"anio_Automovil\": 2023,\n    \"tipo_Automovil\": \"Turismo\",\n    \"capacidad_Automovil\": 4,\n    \"precio_Diario_Automovil\": 15544\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "ba94ecf1-583d-41d1-90dc-c22608f7c6db",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "3d56c5d7-13a2-460e-b477-95aec57a392c",
+            "name": "DeleteAutomovil",
+            "url": "http://127.19.8.7:5010/Automovil/DeleteAutomovil",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2023-08-07T20:57:29.325Z",
+            "modified": "2023-08-22T03:32:44.692Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IkF1dG9tb3ZpbCIsInJvbCI6IkFkbWluIiwiaWF0IjoxNjkyNjc0ODgwLCJleHAiOjE2OTI2NzY2ODB9.LeSEDcJJoShrk8S2pohN24HUt5oC3btBJtPRK8BAaCg"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"id\": \"6\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "f4da87d8-6835-4d08-bd0e-e6c4e7ae695f",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "2090aa03-7697-4a1f-bcb9-58dfd37eab2a",
+            "name": "PutCliente",
+            "url": "http://127.19.8.7:5010/Cliente/PutCliente?id=7",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2023-08-07T21:10:48.804Z",
+            "modified": "2023-08-17T23:33:53.402Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "7",
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"nombre_Cliente\": \"Maria\",\n    \"apellido_Cliente\": \"Rodriguez\",\n    \"identification_Card_Cliente\": \"343434\",\n    \"direccion_Cliente\": \"carreca 11 12-23\",\n    \"telefono_Cliente\": \"232312321\",\n    \"email_Cliente\": \"Maria@gmail.com\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "ee6a133a-6dc2-4e61-9ed9-5b7564944d9c",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "2090aa03-7697-4a1f-bcb9-58dfd37eab2a",
+            "name": "DeleteCliente",
+            "url": "http://127.19.8.7:5010/Cliente/DeleteCliente",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2023-08-07T21:10:48.805Z",
+            "modified": "2023-08-07T21:14:16.746Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"id\": 6\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "ec1fdfa0-4245-4205-825b-c57f69e4936d",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "9913ef26-dc4d-49bf-8ec0-a8dc097e9204",
+            "name": "PutEmpleado",
+            "url": "http://127.19.8.7:5010/Empleado/PutEmpleado?id=5",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2023-08-07T21:17:51.053Z",
+            "modified": "2023-08-17T23:33:19.224Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "5",
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"nombre_Empleado\": \"Marsssia\",\n    \"apellido_Empleado\": \"Rodriguez\",\n    \"identification_Card_Empleado\": \"343434\",\n    \"direccion_Empleado\": \"carreca 11 12-23\",\n    \"telefono_Empleado\": \"232312321\",\n    \"cargo_Empleado\": \"Activo\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "895f1f55-9a59-4a58-b7e4-3b08d1dcf763",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "9913ef26-dc4d-49bf-8ec0-a8dc097e9204",
+            "name": "DeleteEmpleado",
+            "url": "http://127.19.8.7:5010/Empleado/DeleteEmpleado",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2023-08-07T21:17:51.054Z",
+            "modified": "2023-08-07T21:33:33.183Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"id\": 6\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "dd29f3f0-5605-45d8-ae87-de9754b67897",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "cf381ff8-c028-4e31-9f3e-ecbdceef76ec",
+            "name": "PutRegistroDevolucion",
+            "url": "http://127.19.8.7:5010/RegistroDevolucion/PutRegistroDevolucion?id=6",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2023-08-07T21:44:54.931Z",
+            "modified": "2023-08-18T01:26:51.792Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "6",
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"identificacion_Alquiler\": 2,\n    \"identificacion_Empleado\": 2,\n    \"fecha_Dev\": \"2023-02-11\",\n    \"combustible_Dev\": 2.5,\n    \"kilometraje_Dev\": 1566,\n    \"monto_Superior\": 100000\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "d9fe2d48-7b3f-4145-b1cb-ea41b401218f",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "cf381ff8-c028-4e31-9f3e-ecbdceef76ec",
+            "name": "DeleteRegistroDevolucion",
+            "url": "http://127.19.8.7:5010/RegistroDevolucion/DeleteRegistroDevolucion",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2023-08-07T21:44:54.932Z",
+            "modified": "2023-08-17T23:49:40.743Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"id\": \"6s\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "b09e60ac-3f98-488f-aaa0-f3aaa050e6f6",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "96dc8180-cb86-42ae-bcb3-971456520f72",
+            "name": "PutRegistroEntrega",
+            "url": "http://127.19.8.7:5010/RegistroEntrega/PutRegistroEntrega?id=6",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2023-08-07T21:51:45.124Z",
+            "modified": "2023-08-18T01:27:19.543Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "6",
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"identificacion_Alquiler\": 1,\n    \"identificacion_Empleado\": 2,\n    \"fecha_Ent\": \"2023-11-11\",\n    \"combustible_Ent\": 11,\n    \"kilometraje_Ent\": 5000\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "f76f1591-6df3-4bfe-81d5-7a7bf20bf8d4",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "96dc8180-cb86-42ae-bcb3-971456520f72",
+            "name": "DeleteRegistroEntrega",
+            "url": "http://127.19.8.7:5010/RegistroEntrega/DeleteRegistroEntrega",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2023-08-07T21:51:45.125Z",
+            "modified": "2023-08-18T01:27:53.752Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"id\": \"6\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "fd9ec229-c26b-42e2-a6c6-69616fabb2e2",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "04d6af77-eb98-4af4-9c85-874e3ee7b5c8",
+            "name": "PutReserva",
+            "url": "http://127.19.8.7:5010/Reserva/PutReserva?id=6",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2023-08-07T22:10:08.282Z",
+            "modified": "2023-08-18T02:14:42.025Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "6",
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "  {\n  \"identificacion_Cliente\": 2,\n  \"identificacion_Automovil\": 4,\n  \"fecha_Res\": \"2023-04-07\",\n  \"fecha_Inicio\": \"2023-05-09\",\n  \"fecha_Fin\": \"2023-12-15\",\n  \"Estado_Reserva\": \"Pendiente\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "5cb2f920-935d-454f-971f-1c9db2491a82",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "04d6af77-eb98-4af4-9c85-874e3ee7b5c8",
+            "name": "DeleteReserva",
+            "url": "http://127.19.8.7:5010/Reserva/DeleteReserva",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2023-08-07T22:10:08.283Z",
+            "modified": "2023-08-07T22:18:00.958Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"id\": 6\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "6394d3cc-bb7f-4dd0-aa06-84d29e205116",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "8d98959e-44d2-4d69-ba32-443bbc249c05",
+            "name": "PutSucursal",
+            "url": "http://127.19.8.7:5010/Sucursal/PutSucursal?id=6",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2023-08-07T22:34:12.604Z",
+            "modified": "2023-08-18T02:36:45.502Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "6",
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"nombre_Sucursal\": \"Zona Franca 2\",\n    \"direccion_Sucursal\": \"Florida\",\n    \"telefono_Sucursal\": 1256544\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "b724890e-b174-48d9-bc99-1cbee7af063a",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "8d98959e-44d2-4d69-ba32-443bbc249c05",
+            "name": "DeleteSucursal",
+            "url": "http://127.19.8.7:5010/Sucursal/DeleteSucursal",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2023-08-07T22:34:12.605Z",
+            "modified": "2023-08-07T22:39:13.099Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"id\": 6\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "94ea3457-c6a4-402a-b8c1-16ea758df5d0",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "78f506c9-ee5c-4548-9014-77972694c39a",
+            "name": "PutSucursal_Auto",
+            "url": "http://127.19.8.7:5010/Sucursal_Auto/PutSucursal_Auto?id=6",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2023-08-07T23:45:21.605Z",
+            "modified": "2023-08-18T03:00:24.645Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "6",
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"identificacion_Sucursal\": 2,\n    \"identificacion_Auto\": 2,\n    \"cantidad_Disp\": 3\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "7d8a14ac-1324-4514-b6de-3b83788f096e",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "78f506c9-ee5c-4548-9014-77972694c39a",
+            "name": "DeleteSucursal_Auto",
+            "url": "http://127.19.8.7:5010/Sucursal_Auto/DeleteSucursal_Auto",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2023-08-07T23:45:21.606Z",
+            "modified": "2023-08-07T23:48:37.256Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"id\": 6\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "70767cf6-6953-4a58-b8a5-21ac26242e24",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "f643f221-3559-4798-9df0-0a588e9e12b0",
+            "name": "CrearUsuario",
+            "url": "http://127.19.8.7:5010/CrearUsuario",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2023-08-22T01:26:11.788Z",
+            "modified": "2023-08-22T01:39:19.217Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n      \"nombre_Usuario\": \"juanb\",\n      \"correo_Usuario\": \"juanb@gmail.com\",\n      \"contraseña_Usuario\": \"122\",\n      \"codeRol_Usuario\": \"CsWscIpEhqmr1987\"\n    }",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "33d972c4-23cd-4c68-ae73-73f37e00a2eb",
+            "colId": "d7d4a60a-fc7a-46f4-b137-9be35167b129",
+            "containerId": "f643f221-3559-4798-9df0-0a588e9e12b0",
+            "name": "IngresoUsuario",
+            "url": "http://127.19.8.7:5010/IngresarUsuario",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2023-08-22T01:26:11.788Z",
+            "modified": "2023-08-24T14:07:51.107Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre_Usuario\" : \"FredCreations\",\n  \"contraseña_Usuario\" : \"Monochrome1dcg3\",\n  \"endPoint_Solicitado\" : \"Sucursal_Auto\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
