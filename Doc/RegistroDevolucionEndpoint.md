@@ -22,7 +22,7 @@
 
 ## 🗓️/GetRegistroDevolucion
 
-**`GET /GetEmpleado`**: El SubEndPoint `/GetEmpleado`: te permite obtener la lista todos los registros en la colección RegistroDevolucion.
+**`GET /GetRegistroDevolucion`**: El SubEndPoint `/GetRegistroDevolucion`: te permite obtener la lista todos los registros en la colección RegistroDevolucion.
 
 🚨**Aclaraciones y Validaciones**🚨
 
@@ -113,7 +113,7 @@ Si la solicitud es exitosa, recibirás una respuesta positiva
 
 ## 🚨/PostRegistroDevolucion
 
-**`POST /PostEmpleado`**: El SubEndPoint  `/PostEmpleado`: es una ruta de la API que permite crear un nuevo documento en la colección RegistroDevolucion.
+**`POST /PostRegistroDevolucion`**: El SubEndPoint  `/PostRegistroDevolucion`: es una ruta de la API que permite crear un nuevo documento en la colección RegistroDevolucion.
 
 🚨**Aclaraciones y Validaciones**🚨
 
