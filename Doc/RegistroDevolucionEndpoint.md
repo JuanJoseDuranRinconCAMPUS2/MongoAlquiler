@@ -14,7 +14,7 @@
 
 ------
 ## 🪙**Indice**🪙
-1. [🗓️GetRegistroDevolucion🗓️](#getregistrodevolucion) 
+1. [🗓️GetRegistroDevolucion🗓️](#%EF%B8%8Fgetregistrodevolucion) 
 2. [🚨PostRegistroDevolucion🚨](#postregistrodevolucion)
 3. [🛃PutRegistroDevolucion🛃](#putregistrodevolucion) 
 4. [💢DeleteRegistroDevolucion💢](#deleteregistrodevolucion) 
