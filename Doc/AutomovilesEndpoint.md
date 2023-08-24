@@ -185,6 +185,7 @@ Si la solicitud es exitosa, recibirás una respuesta positiva
     }
    </details>
 ------
+
 ## 🛃/PutAutomovil
 
 **`PUT /PutAutomovil`**: El SubEndPoint  `/PutAutomovil`: es una ruta de la API que permite actualizar un documento en la colección Automovil.
@@ -243,6 +244,7 @@ Si la solicitud es exitosa, recibirás una respuesta positiva
     }
    </details>
 ------
+
 ## 💢/DeleteAutomovil
 
 **`DELETE /DeleteAutomovil`**: El SubEndPoint  `/DeleteAutomovil`: es una ruta de la API que permite eliminar un documento en la colección Automovil.

@@ -184,6 +184,7 @@ Si la solicitud es exitosa, recibirás una respuesta positiva
     }
    </details>
 ------
+
 ## 🛃/PutAlquiler
 
 **`PUT /PostAlquiler`**: El SubEndPoint  `/PostAlquiler`: es una ruta de la API que permite actualizar un documento en la colección Alquiler.
@@ -240,6 +241,7 @@ Si la solicitud es exitosa, recibirás una respuesta positiva
     }
    </details>
 ------
+
 ## 💢/DeleteAlquiler
 
 **`DELETE /DeleteAlquiler`**: El SubEndPoint  `/DeleteAlquiler`: es una ruta de la API que permite eliminar un documento en la colección Alquiler.
