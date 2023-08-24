@@ -143,7 +143,7 @@ AppCliente.get('/Clientes_Alquiler', limitGColecciones(), proxyEndpointVerify(0,
 AppCliente.get('/DatosClientesPorReserva', limitGColecciones(), proxyQueryID, proxyEndpointVerify(0, "Cliente"), async (req, res) =>{
     if(!req.rateLimit) return;
     let cliente = db.collection("cliente");
-    let id_Reserva = parseInt(req.query.id_Reserva, 10);
+    let id_Reserva = parseInt(req.query.id, 10);
     let result = await cliente.aggregate([  
         {    
             $lookup: {      
