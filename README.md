@@ -371,12 +371,11 @@ Antes de ejecutar el código, asegúrate:
 
    **Aclaraciones y Validaciones**
 
-     <details>
-       <summary> <h3> Tipo De data </h3></summary>
-     nombre_Usuario" : Cadena de caracteres (string)<br>
-     contraseña_Usuario" : Cadena de caracteres (string)"<br>
-     endPoint_Solicitado : Cadena de caracteres (string) (Debe ser un endpoint en la API)<br>
-   </details>
+   <details>
+   <summary> <h3> Tipo De data </h3></summary>
+ nombre_Usuario" : Cadena de caracteres (string)<br>
+ contraseña_Usuario" : Cadena de caracteres (string)"<br>
+ endPoint_Solicitado : Cadena de caracteres (string) (Debe ser un endpoint en la API)<br></details>
 
    -  El valor de "endPoint_Solicitado": Debe ser el nombre de los endpoints de esta api:
 
@@ -440,21 +439,19 @@ Antes de ejecutar el código, asegúrate:
    http://127.19.8.7:5010/IngresarUsuario
    ```
 
-     <details>
-       <summary> <h3> Data de entrada </h3></summary> 
-       {<br>
-         "nombre_Usuario" : "FredCreations",<br>
-         "contraseña_Usuario" : "Monochrome1dcg3",<br>
-         "endPoint_Solicitado" : "TransladoProductos"<br>
-       }
-    </details>
-
-     <details>
-       <summary> <h3> Data de Salida </h3></summary> 
-          {  <br>
-         "status": 201,<br>
-          "message": 
-   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IlRyYW5zbGFkb1Byb2R1Y3RvcyIsInJvbCI6IkFkbWluIiwiaWF0IjoxNjkyNjMzMDk4LCJleHAiOjE2OTI2MzQ4OTh9.mAHmqnZRnxy8mfo1uV2CHstvjjUo_cM5ohTyg5EGBl0",<br>
+ <details>
+   <summary> <h3> Data de entrada </h3></summary> 
+   {<br>
+     "nombre_Usuario" : "FredCreations",<br>
+     "contraseña_Usuario" : "Monochrome1dcg3",<br>
+     "endPoint_Solicitado" : "TransladoProductos"<br>
+   }
+</details>
+ <details>
+   <summary> <h3> Data de Salida </h3></summary> 
+      {  <br>
+     "status": 201,<br>
+      "message": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJGcmVkQ3JlYXRpb25zIiwicGFzc3dvcmQiOiJNb25vY2hyb21lMWRjZzMiLCJlbmRQb2ludCI6IlRyYW5zbGFkb1Byb2R1Y3RvcyIsInJvbCI6IkFkbWluIiwiaWF0IjoxNjkyNjMzMDk4LCJleHAiOjE2OTI2MzQ4OTh9.mAHmqnZRnxy8mfo1uV2CHstvjjUo_cM5ohTyg5EGBl0",<br>
          "instructions": "En el header de la peticion pon el header 'Authorization' y luego pon esta llave como valor"<br>
        	}
     </details>
@@ -467,19 +464,35 @@ Antes de ejecutar el código, asegúrate:
 
 Presiona cada endpoint para ir a la documentación con sus rutas y funcionalidades.
 
-|     Endpoints      | Función                                                      |
-| :----------------: | ------------------------------------------------------------ |
-|    Colecciones     | Este endpoint permite gestionar las colecciones en la BD. Ofrece métodos CRUD para obtener, crear, y eliminar colecciones. |
-|      Alquiler      | Este endpoint permite gestionar los alquileres de vehículos. Ofrece métodos CRUD para crear, leer, actualizar y eliminar alquileres. Además, proporciona consultas para buscar alquileres por diferentes criterios. |
-|     Automovil      | Aquí puedes administrar los registros de vehículos disponibles. La colección proporciona operaciones CRUD para gestionar la información de los automóviles. Además, se incluyen consultas para filtrar vehículos por tipo, capacidad y otros atributos. |
-|      Cliente       | Gestiona los detalles de los clientes de la empresa. Los métodos CRUD permiten crear, leer, actualizar y eliminar registros de clientes. También se ofrecen consultas para buscar clientes |
-|      Empleado      | Esta colección se encarga de los empleados de la organización. Con los métodos CRUD, puedes agregar, consultar, actualizar y eliminar información de empleados. Además, se incluyen consultas para buscar empleados por cargo y otros criterios. |
-| RegistroDevolucion | Aquí se registran las devoluciones de alquileres. La colección presenta operaciones CRUD para administrar los registros de devolución. Además, se ofrecen consultas para buscar registros. |
-|  RegistroEntrega   | Gestiona los registros de entregas de alquileres. Los métodos CRUD permiten manejar la información de entrega. También encontrarás consultas para buscar entregas. |
-|      Reserva       | Administra las reservas de alquileres anticipados. Ofrece operaciones CRUD para gestionar las reservas. Además, se incluyen consultas para buscar reservas especificas. |
-|      Sucursal      | Esta colección abarca los datos de las sucursales de la empresa. Los métodos CRUD permiten administrar la información de las sucursales. También se incluyen consultas para buscar sucursales especificas. |
-|   Sucursal_Auto    | Gestiona la disponibilidad de vehículos en cada sucursal. Los métodos CRUD permiten administrar la relación entre sucursales y automóviles. Además, encontrarás consultas para buscar automóviles disponibles en una sucursal específica. |
+|                          Endpoints                           | Función                                                      |
+| :----------------------------------------------------------: | ------------------------------------------------------------ |
+| [Colecciones](https://github.com/JuanJoseDuranRinconCAMPUS2/MongoAlquiler/blob/main/Doc/ColeccionesEndpoint.md) | Este endpoint permite gestionar las colecciones en la BD. Ofrece métodos CRUD para obtener, crear, y eliminar colecciones. |
+| [Alquiler](https://github.com/JuanJoseDuranRinconCAMPUS2/MongoAlquiler/blob/main/Doc/AlquileresEndpoint.md) | Este endpoint permite gestionar los alquileres de vehículos. Ofrece métodos CRUD para crear, leer, actualizar y eliminar alquileres. Además, proporciona consultas para buscar alquileres por diferentes criterios. |
+| [Automovil](https://github.com/JuanJoseDuranRinconCAMPUS2/MongoAlquiler/blob/main/Doc/AutomovilesEndpoint.md) | Aquí puedes administrar los registros de vehículos disponibles. La colección proporciona operaciones CRUD para gestionar la información de los automóviles. Además, se incluyen consultas para filtrar vehículos por tipo, capacidad y otros atributos. |
+| [Cliente](https://github.com/JuanJoseDuranRinconCAMPUS2/MongoAlquiler/blob/main/Doc/ClientesEndpoint.md) | Gestiona los detalles de los clientes de la empresa. Los métodos CRUD permiten crear, leer, actualizar y eliminar registros de clientes. También se ofrecen consultas para buscar clientes |
+| [Empleado](https://github.com/JuanJoseDuranRinconCAMPUS2/MongoAlquiler/blob/main/Doc/EmpleadoEndpoint.md) | Esta colección se encarga de los empleados de la organización. Con los métodos CRUD, puedes agregar, consultar, actualizar y eliminar información de empleados. Además, se incluyen consultas para buscar empleados por cargo y otros criterios. |
+| [RegistroDevolucion](https://github.com/JuanJoseDuranRinconCAMPUS2/MongoAlquiler/blob/main/Doc/RegistroDevolucionEndpoint.md) | Aquí se registran las devoluciones de alquileres. La colección presenta operaciones CRUD para administrar los registros de devolución. Además, se ofrecen consultas para buscar registros. |
+| [RegistroEntrega](https://github.com/JuanJoseDuranRinconCAMPUS2/MongoAlquiler/blob/main/Doc/RegistroEntrega.md) | Gestiona los registros de entregas de alquileres. Los métodos CRUD permiten manejar la información de entrega. También encontrarás consultas para buscar entregas. |
+| [Reserva](https://github.com/JuanJoseDuranRinconCAMPUS2/MongoAlquiler/blob/main/Doc/ReservaEndpoint.md) | Administra las reservas de alquileres anticipados. Ofrece operaciones CRUD para gestionar las reservas. Además, se incluyen consultas para buscar reservas especificas. |
+| [Sucursal](https://github.com/JuanJoseDuranRinconCAMPUS2/MongoAlquiler/blob/main/Doc/SucursalEndpoint.md) | Esta colección abarca los datos de las sucursales de la empresa. Los métodos CRUD permiten administrar la información de las sucursales. También se incluyen consultas para buscar sucursales especificas. |
+| [Sucursal_Auto](https://github.com/JuanJoseDuranRinconCAMPUS2/MongoAlquiler/blob/main/Doc/Sucursal_AutoEndpoint.md) | Gestiona la disponibilidad de vehículos en cada sucursal. Los métodos CRUD permiten administrar la relación entre sucursales y automóviles. Además, encontrarás consultas para buscar automóviles disponibles en una sucursal específica. |
+---
+## **🪄⚗️Archivo thunder⚗️🪄**
 
+Aqui encontraras el archivo con las colecciones de thunder usadas para ejecutar los endpoints de manera mas facil de este proyecto
+
+[Preciona Aqui Para Ir Directamente Al Archivo](https://github.com/JuanJoseDuranRinconCAMPUS2/bodegasNodeExpress/blob/main/backend/Thunder/thunder-collection_BodegasMongoDB.json)
+
+## **🚀🎇 Importacion Archivo thunder🎇🚀**
+
+- Descarga el archivo thunder-collection_BodegasMongoDB.json en el link de arriba
+- Abre Thunder, ve a Collections y abre el menu
+
+- Haz Click donde dice "Import"
+
+- Selecciona el archivo thunder-collection_BodegasMongoDB.json
+
+- Y listo!!. Ya tendras todas las carpetas que contituyen los endPoints del proyecto.
 ------
 
 ## **🌌Contribución🌌**
