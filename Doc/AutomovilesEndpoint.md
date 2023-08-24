@@ -19,7 +19,7 @@
 3. [🛃PutAutomovil🛃](#putautomovil) 
 4. [💢DeleteAutomovil💢](#deleteautomovil) 
 5. [🚨Consultas Especiales: /Automovil🚨](#consultas-especiales-automovil)   
-6. [🦊(3) AlquilerCliente🦊](#2automovilesdisp)  
+6. [🦊(2) AlquilerCliente🦊](#2automovilesdisp)  
 7. [🧧(10) AutosMax5🧧](#10autosmax5)  
 8. [🎫(15) AutosMarcasModelos🎫](#15autosmarcasmodelos)  
 9.  [⚛️(18)DispoAutosMax5⚛️](#18dispoautosmax5)   
