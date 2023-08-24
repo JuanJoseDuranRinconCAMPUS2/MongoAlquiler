@@ -2,7 +2,7 @@
 
 ------
 
-![](https://github.com/JuanJoseDuranRinconCAMPUS2/MongoAlquiler/blob/main/imgs/proyecto1%23%20(3).png?raw=true)
+![](https://github.com/JuanJoseDuranRinconCAMPUS2/MongoAlquiler/blob/main/imgs/proyecto1%23%20(6).png?raw=true)
 
 ------
 
@@ -19,8 +19,8 @@
 3. [🛃PutReserva🛃](#putreserva) 
 4. [💢DeleteReserva💢](#deletereserva) 
 5. [🚨Consultas Especiales: /Reserva🚨](#consultas-especiales-reserva)   
-6. [🦊(4)ReservasPendientesCyA🦊](#6reservaspendientescya)  
-7. [🧧(12)ClienteEspecificoPendiente🧧](#13clienteespecificopendiente)  
+6. [🦊(4)ReservasPendientesCyA🦊](#4reservaspendientescya)  
+7. [🧧(12)ClienteEspecificoPendiente🧧](#12clienteespecificopendiente)  
 
 ------
 
