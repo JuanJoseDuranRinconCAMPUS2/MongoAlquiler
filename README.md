@@ -293,9 +293,9 @@ Antes de ejecutar el código, asegúrate:
 2. Dentro del archivo `.env`, define las siguientes variables de entorno:
 
    - MY_CONFIG={"hostname": "127.19.8.7", "port":5010}
-   - Atlas_User=""
-   - Atlas_Password=""
-   - Atlas_DB="db_Bodegas"
+   - Atlas_User="juanjoseduranrincon404"
+   - Atlas_Password="Mgkq49muHOUs00TQ"
+   - Atlas_DB="db_campus_alquiler"
    - Jwt_Primate_Key="Nywx e tiqimr erxi e hiwtq gere hkviigx hiwx erh fiexmrkmrk hievm ehirxmsrk wmxiw xlmrk"
 
    Reemplaza `Atlas_User`, `Atlas_Password`, y con los datos de tu base de datos de Mongo.
